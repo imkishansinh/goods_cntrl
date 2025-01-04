@@ -6,4 +6,6 @@ class SizeDimens {
   static const double large = 24;
   static const double xLarge = 32;
   static const double xxLarge = 64;
+
+  static const double pagePadding = 8;
 }

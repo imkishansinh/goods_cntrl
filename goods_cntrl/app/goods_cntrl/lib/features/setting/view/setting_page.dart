@@ -9,7 +9,11 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SettingCubit(),
-      child: const Scaffold(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Settings'),
+        ),
         body: SettingView(),
       ),
     );

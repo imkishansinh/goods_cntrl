@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: routerConfig,
       title: 'GoodsCntrl',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,

@@ -1,23 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:goods_cntrl/features/home/home.dart';
+import 'package:flutter/services.dart';
+import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/features/login/cubit/cubit.dart';
 
-import '../../../router/routes.dart';
-
 class LoginBody extends StatelessWidget {
-  const LoginBody({super.key});
+  LoginBody({super.key});
+
+  final TextEditingController _emailCntrl = TextEditingController();
+  final TextEditingController _passCntrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
-        return Center(
-          child: GestureDetector(
-            onTap: () {
-              context.pushReplacementNamed(Routes.home.name.toString());
-            },
-            child: Text(state.customProperty),
+        return Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: SizeDimens.small,
+            children: [
+              Icon(
+                Icons.shopping_cart_outlined,
+                size: SizeDimens.xxLarge,
+              ),
+              TextFormField(
+                controller: _emailCntrl,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  return null;
+                },
+              ),
+              Row(
+                spacing: SizeDimens.small,
+                children: [
+                  OutlinedButton(
+                    onPressed: () {
+                      _emailCntrl.clear();
+                      _passCntrl.clear();
+                      FocusScope.of(context).requestFocus(FocusNode());
+                    },
+                    child: Text('Cancel'),
+                  ),
+                  FilledButton(
+                    onPressed: () async {
+                      context.read<LoginCubit>().signUpWithEmailPw(
+                            _emailCntrl.text.trim(),
+                          );
+                    },
+                    child: Text('Login'),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       },
