@@ -15,7 +15,7 @@ class LoginBody extends StatelessWidget {
         return Center(
           child: GestureDetector(
             onTap: () {
-              context.pushReplacement(Routes.home);
+              context.pushReplacementNamed(Routes.home.name.toString());
             },
             child: Text(state.customProperty),
           ),

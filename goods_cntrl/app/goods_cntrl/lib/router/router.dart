@@ -10,25 +10,29 @@ import 'routes.dart';
 final GoRouter routerConfig = GoRouter(
   routes: <RouteBase>[
     GoRoute(
-      path: Routes.root,
+      path: Routes.root.path,
+      name: Routes.root.name.toString(),
       builder: (context, state) {
         return const LandingPage();
       },
       routes: [
         GoRoute(
-          path: Routes.login,
+          path: Routes.login.path,
+          name: Routes.login.name.toString(),
           builder: (context, state) {
             return const LoginPage();
           },
         ),
         GoRoute(
-          path: Routes.home,
+          path: Routes.home.path,
+          name: Routes.home.name.toString(),
           builder: (context, state) {
             return const HomePage();
           },
           routes: [
             GoRoute(
-              path: Routes.setting,
+              path: Routes.setting.path,
+              name: Routes.setting.name.toString(),
               builder: (context, state) {
                 return const SettingPage();
               },

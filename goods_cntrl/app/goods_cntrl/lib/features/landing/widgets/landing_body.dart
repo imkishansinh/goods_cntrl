@@ -24,7 +24,9 @@ class LandingBody extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  context.pushReplacement(Routes.login);
+                  context.pushReplacementNamed(
+                    Routes.login.name.toString(),
+                  );
                 },
                 icon: Icon(
                   Icons.forward_outlined,

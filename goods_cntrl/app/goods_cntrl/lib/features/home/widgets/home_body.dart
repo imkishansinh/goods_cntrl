@@ -14,7 +14,7 @@ class HomeBody extends StatelessWidget {
         return Center(
           child: GestureDetector(
             onTap: () {
-              context.push(Routes.home + Routes.setting);
+              context.pushNamed(Routes.setting.name.toString());
             },
             child: Text(state.customProperty),
           ),
