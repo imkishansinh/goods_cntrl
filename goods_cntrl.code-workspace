@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "goods_cntrl/app/goods_cntrl"
+		},
+		{
+			"path": "goods_cntrl/app/packages/supabase_service"
+		}
+	],
+	"settings": {}
+}

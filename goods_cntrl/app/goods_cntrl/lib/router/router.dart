@@ -15,29 +15,27 @@ final GoRouter routerConfig = GoRouter(
       builder: (context, state) {
         return const LandingPage();
       },
+    ),
+    GoRoute(
+      path: Routes.login.path,
+      name: Routes.login.name.toString(),
+      builder: (context, state) {
+        return const LoginPage();
+      },
+    ),
+    GoRoute(
+      path: Routes.home.path,
+      name: Routes.home.name.toString(),
+      builder: (context, state) {
+        return const HomePage();
+      },
       routes: [
         GoRoute(
-          path: Routes.login.path,
-          name: Routes.login.name.toString(),
+          path: Routes.setting.path,
+          name: Routes.setting.name.toString(),
           builder: (context, state) {
-            return const LoginPage();
+            return const SettingPage();
           },
-        ),
-        GoRoute(
-          path: Routes.home.path,
-          name: Routes.home.name.toString(),
-          builder: (context, state) {
-            return const HomePage();
-          },
-          routes: [
-            GoRoute(
-              path: Routes.setting.path,
-              name: Routes.setting.name.toString(),
-              builder: (context, state) {
-                return const SettingPage();
-              },
-            ),
-          ],
         ),
       ],
     ),

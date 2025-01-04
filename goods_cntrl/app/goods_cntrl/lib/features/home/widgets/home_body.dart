@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:goods_cntrl/features/home/cubit/cubit.dart';
 
-import '../../../router/routes.dart';
+import 'package:goods_cntrl/features/home/cubit/cubit.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -11,14 +9,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        return Center(
-          child: GestureDetector(
-            onTap: () {
-              context.pushNamed(Routes.setting.name.toString());
-            },
-            child: Text(state.customProperty),
-          ),
-        );
+        return Container();
       },
     );
   }
