@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'model/supa_user_table_model.dart';
+
+final _supabase = Supabase.instance.client;
+
 class SupabaseClass {
   SupabaseClass(this.redirectURL);
   final String redirectURL;
@@ -19,7 +23,7 @@ class SupabaseClass {
   }
 
   Future<void> signInWithEmailOTP(String email) async {
-    return Supabase.instance.client.auth.signInWithOtp(
+    return _supabase.auth.signInWithOtp(
       email: email,
       emailRedirectTo: kIsWeb ? null : redirectURL,
     );
@@ -31,8 +35,7 @@ class SupabaseClass {
   ) {
     if (_streamSubscription == null) disposeAuthStream();
 
-    _streamSubscription =
-        Supabase.instance.client.auth.onAuthStateChange.listen(
+    _streamSubscription = _supabase.auth.onAuthStateChange.listen(
       (data) {
         final session = data.session;
         if (session != null) {
@@ -46,13 +49,32 @@ class SupabaseClass {
   }
 
   Future signout() async {
-    return Supabase.instance.client.auth.signOut();
+    return _supabase.auth.signOut();
   }
 
-  bool get isAuthenticated =>
-      Supabase.instance.client.auth.currentSession != null;
+  bool get isAuthenticated => _supabase.auth.currentSession != null;
 
   void disposeAuthStream() {
     _streamSubscription?.cancel();
   }
+
+  Future registerNewUser(String email) async {
+    final temp = SupaUserTableModel(email).toJson();
+    _supabase.from(_userTable).insert(
+          temp,
+        );
+  }
 }
+
+// class SupabaseDb {
+//   Future registerNewUser(String email) async {
+//     _supabase.from(_userTable).insert(
+//           SupaUserTableModel(email).toJson(),
+//         );
+//   }
+// }
+
+const String _userTable = 'users';
+// const String _businessTable = 'business';
+// const String _userBusinessesTable = 'user_businesses';
+// const String _businessFollowsTable = 'business_follows';

@@ -21,6 +21,9 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     serviceLocator.get<SupabaseClass>().listen(
       () {
+        serviceLocator
+            .get<SupabaseClass>()
+            .registerNewUser('c901redmismarttv@gmail.com');
         context.pushReplacementNamed(Routes.home.name.toString());
       },
       () {},
