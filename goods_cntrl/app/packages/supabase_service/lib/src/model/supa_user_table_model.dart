@@ -4,11 +4,11 @@ part 'supa_user_table_model.g.dart';
 
 @JsonSerializable()
 class SupaUserTableModel {
-  SupaUserTableModel(this.email);
-  String email;
-
   factory SupaUserTableModel.fromJson(Map<String, dynamic> json) =>
       _$SupaUserTableModelFromJson(json);
+  SupaUserTableModel(this.email);
+
+  String email;
 
   Map<String, dynamic> toJson() => _$SupaUserTableModelToJson(this);
 }

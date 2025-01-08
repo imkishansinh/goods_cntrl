@@ -2,26 +2,37 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_service/src/domain/supabase_class.dart';
 
 import 'model/supa_user_table_model.dart';
 
 final _supabase = Supabase.instance.client;
 
-class SupabaseClass {
-  SupabaseClass(this.redirectURL);
-  final String redirectURL;
-  StreamSubscription? _streamSubscription;
+class SupabaseClassImpl implements SupabaseClass {
+  SupabaseClassImpl(this.redirectURL);
 
+  final String redirectURL;
+
+  bool _isInit = false;
+  bool get isInit => _isInit;
+
+  @override
   Future init(
     String supabaseUrl,
     String supabaseAnonKey,
   ) {
-    return Supabase.initialize(
-      url: supabaseUrl,
-      anonKey: supabaseAnonKey,
-    );
+    if (!_isInit) {
+      _isInit = true;
+      return Supabase.initialize(
+        url: supabaseUrl,
+        anonKey: supabaseAnonKey,
+      );
+    }
+
+    return Future.value();
   }
 
+  @override
   Future<void> signInWithEmailOTP(String email) async {
     return _supabase.auth.signInWithOtp(
       email: email,
@@ -29,40 +40,20 @@ class SupabaseClass {
     );
   }
 
-  void listen(
-    VoidCallback onSuccess,
-    VoidCallback onError,
-  ) {
-    if (_streamSubscription == null) disposeAuthStream();
-
-    _streamSubscription = _supabase.auth.onAuthStateChange.listen(
-      (data) {
-        final session = data.session;
-        if (session != null) {
-          onSuccess();
-        }
-      },
-      onError: (error) {
-        onError();
-      },
-    );
-  }
-
+  @override
   Future signout() async {
     return _supabase.auth.signOut();
   }
 
+  @override
   bool get isAuthenticated => _supabase.auth.currentSession != null;
 
-  void disposeAuthStream() {
-    _streamSubscription?.cancel();
-  }
+  @override
+  Stream<AuthState> get authStream => _supabase.auth.onAuthStateChange;
 
-  Future registerNewUser(String email) async {
-    final temp = SupaUserTableModel(email).toJson();
-    _supabase.from(_userTable).insert(
-          temp,
-        );
+  @override
+  void registerNewUser(SupaUserTableModel userModel) {
+    _supabase.from(_userTable).insert(userModel);
   }
 }
 

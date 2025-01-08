@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_service/supabase_service.dart';
+import 'package:provider/provider.dart';
 
 import 'app/app.dart';
-import 'injections/app_injections.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'dependencies/dependencies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,14 +13,10 @@ void main() async {
   // Env variables
   await dotenv.load(fileName: '.env');
 
-  // Injections
-  await configureInjections();
-
-  // Initialise supabase
-  serviceLocator.get<SupabaseClass>().init(
-        dotenv.env['supabase_url'] ?? '',
-        dotenv.env['supabase_anon_key'] ?? '',
-      );
-
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: allTheProviders,
+      child: const MyApp(),
+    ),
+  );
 }
