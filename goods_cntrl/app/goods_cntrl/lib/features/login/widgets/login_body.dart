@@ -50,9 +50,10 @@ class LoginBody extends StatelessWidget {
                     onPressed: isOTPSendingRunning
                         ? null
                         : () async {
-                            context.read<LoginViewmodel>().signInViaEmailOTP(
-                                  _emailCntrl.text.trim(),
-                                );
+                            context
+                                .read<LoginViewmodel>()
+                                .sendOTPToEmail
+                                .execute(_emailCntrl.text);
                           },
                     child: Text('Login'),
                   );

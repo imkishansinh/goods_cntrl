@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_service/src/domain/supabase_class.dart';
 
-import 'model/supa_user_table_model.dart';
+import 'data/model/supa_user_table_model.dart';
 
 final _supabase = Supabase.instance.client;
 
@@ -49,11 +49,26 @@ class SupabaseClassImpl implements SupabaseClass {
   bool get isAuthenticated => _supabase.auth.currentSession != null;
 
   @override
+  User? get currentUser => _supabase.auth.currentUser;
+
+  @override
   Stream<AuthState> get authStream => _supabase.auth.onAuthStateChange;
 
   @override
-  void registerNewUser(SupaUserTableModel userModel) {
-    _supabase.from(_userTable).insert(userModel);
+  Future registerNewUser(SupaUserTableModel userModel) {
+    if (_supabase.auth.currentUser == null) {
+      throw Exception('User not authenticated');
+    }
+    return Future.value(_supabase.from(_userTable).insert(userModel.toJson()));
+  }
+
+  @override
+  Future fetchProfile() {
+    // _supabase.from(_userTable).select().eq(
+    //       'id',
+    //       'value',
+    //     );
+    return Future.value();
   }
 }
 

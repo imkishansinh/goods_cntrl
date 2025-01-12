@@ -1,6 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../model/supa_user_table_model.dart';
+import '../data/model/supa_user_table_model.dart';
 
 abstract class SupabaseClass {
   /// Basic auth methods
@@ -11,6 +11,8 @@ abstract class SupabaseClass {
 
   bool get isAuthenticated;
 
+  User? get currentUser;
+
   Future<void> signInWithEmailOTP(String email);
 
   Stream<AuthState> get authStream;
@@ -18,5 +20,7 @@ abstract class SupabaseClass {
   Future signout();
 
   /// Dabase methods
-  void registerNewUser(SupaUserTableModel userTable);
+  Future registerNewUser(SupaUserTableModel userTable);
+
+  Future fetchProfile();
 }

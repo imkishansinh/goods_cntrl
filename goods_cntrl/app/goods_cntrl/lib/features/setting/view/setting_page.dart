@@ -17,16 +17,7 @@ class SettingPage extends StatelessWidget {
         centerTitle: true,
         title: Text('Settings'),
       ),
-      body: SettingView(),
+      body: SettingBody(),
     );
-  }
-}
-
-class SettingView extends StatelessWidget {
-  const SettingView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SettingBody();
   }
 }

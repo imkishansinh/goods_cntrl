@@ -3,6 +3,7 @@ abstract class Routes {
   static const AppRoute setting = AppRoute('/setting', RouteNames.setting);
   static const AppRoute home = AppRoute('/home', RouteNames.home);
   static const AppRoute login = AppRoute('/login', RouteNames.login);
+  static const AppRoute profile = AppRoute('/profile', RouteNames.profile);
 }
 
 class AppRoute {
@@ -20,4 +21,5 @@ enum RouteNames {
   root,
   setting,
   login,
+  profile,
 }

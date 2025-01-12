@@ -7,13 +7,13 @@ class LoginViewmodel {
   LoginViewmodel({
     required this.supaService,
   }) {
-    sendOTPToEmail = Command1(signInViaEmailOTP);
+    sendOTPToEmail = Command1(_signInViaEmailOTP);
   }
   final SupabaseClass supaService;
 
   late final Command1<bool, String> sendOTPToEmail;
 
-  Future<Result<bool>> signInViaEmailOTP(String email) async {
+  Future<Result<bool>> _signInViaEmailOTP(String email) async {
     supaService.signInWithEmailOTP(email);
     return Future.value(Result.ok(true));
   }

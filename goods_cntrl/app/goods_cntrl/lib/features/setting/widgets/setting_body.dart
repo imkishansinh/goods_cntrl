@@ -17,15 +17,31 @@ class SettingBody extends StatefulWidget {
 class _SettingBodyState extends State<SettingBody> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('Logout'),
-      onTap: () {
-        context.read<SupabaseClass>().signout().then(_signout);
-      },
+    return ListView(
+      children: [
+        ListTile(
+          title: Text('Profile'),
+          onTap: () {
+            _navigateToProfile();
+          },
+        ),
+        ListTile(
+          title: Text('Logout'),
+          onTap: () {
+            context.read<SupabaseClass>().signout().then(
+                  _navigateToLogin,
+                );
+          },
+        ),
+      ],
     );
   }
 
-  FutureOr _signout(data) {
+  FutureOr _navigateToLogin(data) {
     context.replaceNamed(Routes.login.name.toString());
+  }
+
+  FutureOr _navigateToProfile() {
+    context.pushNamed(Routes.profile.name.toString());
   }
 }
