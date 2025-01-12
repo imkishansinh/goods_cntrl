@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 
+import '../../../core/widgets/common_widgets.dart';
+
 class LandingBody extends StatelessWidget {
   const LandingBody({super.key});
 
@@ -11,9 +13,8 @@ class LandingBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: SizeDimens.medium,
         children: [
-          Icon(
-            Icons.shopping_cart_outlined,
-            size: SizeDimens.xxLarge,
+          AppIcon(
+            iconSize: SizeDimens.xxLarge,
           ),
         ],
       ),
