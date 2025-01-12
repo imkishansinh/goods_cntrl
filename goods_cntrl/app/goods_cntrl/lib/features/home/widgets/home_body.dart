@@ -7,12 +7,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        children: [
-          GestureDetector(
-            onTap: () {},
-            child: Text('Register'),
-          ),
-        ],
+        children: [],
       ),
     );
   }

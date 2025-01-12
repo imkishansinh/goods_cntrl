@@ -56,14 +56,15 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: Text('GoodsCntrl'),
         actions: [
-          IconButton(
-            onPressed: () {
-              context.pushNamed(Routes.setting.name.toString());
-            },
-            icon: Icon(
-              Icons.settings,
+          if (context.read<SupabaseClass>().isAuthenticated)
+            IconButton(
+              onPressed: () {
+                context.pushNamed(Routes.setting.name.toString());
+              },
+              icon: Icon(
+                Icons.settings,
+              ),
             ),
-          ),
         ],
       ),
     );
