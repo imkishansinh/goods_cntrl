@@ -24,6 +24,10 @@ class _LoginBodyState extends State<LoginBody> {
         .read<LoginViewmodel>()
         .emailHintPrompt
         .addListener(_emailPromotListener);
+    context
+        .read<LoginViewmodel>()
+        .sendOTPToEmail
+        .addListener(_sendOTPToEmailListener);
   }
 
   void _emailPromotListener() {
@@ -31,6 +35,17 @@ class _LoginBodyState extends State<LoginBody> {
         !context.read<LoginViewmodel>().emailHintPrompt.error) {
       _emailCntrl.text =
           (context.read<LoginViewmodel>().emailHintPrompt.result as Ok).value;
+    }
+  }
+
+  void _sendOTPToEmailListener() {
+    if (context.read<LoginViewmodel>().sendOTPToEmail.completed &&
+        !context.read<LoginViewmodel>().sendOTPToEmail.error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Email is sent to your email address'),
+        ),
+      );
     }
   }
 
@@ -102,6 +117,16 @@ class _LoginBodyState extends State<LoginBody> {
                           onPressed: isOTPSendingRunning
                               ? null
                               : () async {
+                                  if (_emailCntrl.text.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Please enter email address or choose from the list',
+                                        ),
+                                      ),
+                                    );
+                                    return;
+                                  }
                                   context
                                       .read<LoginViewmodel>()
                                       .sendOTPToEmail
@@ -134,6 +159,21 @@ class _LoginBodyState extends State<LoginBody> {
                 ],
               ),
             ),
+          ListenableBuilder(
+            listenable: context.read<LoginViewmodel>().emailHintPrompt,
+            builder: (context, child) {
+              final isEmailHintPromptRunning =
+                  context.read<LoginViewmodel>().sendOTPToEmail.running;
+              return isEmailHintPromptRunning
+                  ? Container(
+                      color: Colors.black.withOpacity(0.1),
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : const SizedBox();
+            },
+          ),
         ],
       ),
     );

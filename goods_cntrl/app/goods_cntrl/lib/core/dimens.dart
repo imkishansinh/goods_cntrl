@@ -8,4 +8,5 @@ class SizeDimens {
   static const double xxLarge = 64;
 
   static const double pagePadding = 8;
+  static const double borderRadius = 8;
 }

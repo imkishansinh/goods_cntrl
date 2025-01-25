@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/dimens.dart';
 import '../router/router_config.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,6 +15,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
+        snackBarTheme: Theme.of(context).snackBarTheme.copyWith(
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(SizeDimens.borderRadius),
+              ),
+            ),
       ),
     );
   }
