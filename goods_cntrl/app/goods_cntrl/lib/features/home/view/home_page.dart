@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:goods_cntrl/features/home/widgets/home_body.dart';
+import 'package:goods_cntrl/router/routes.dart';
 import 'package:goods_cntrl/utilities/secure_storage/secure_session.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../../../dependencies/dependencies.dart';
-import '../../../router/routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

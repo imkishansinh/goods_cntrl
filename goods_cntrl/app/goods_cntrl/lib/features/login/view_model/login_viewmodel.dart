@@ -1,8 +1,7 @@
 import 'package:account_picker/account_picker.dart';
+import 'package:goods_cntrl/utilities/command.dart';
+import 'package:goods_cntrl/utilities/result.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../../../utilities/command.dart';
-import '../../../utilities/result.dart';
 
 class LoginViewmodel {
   LoginViewmodel({

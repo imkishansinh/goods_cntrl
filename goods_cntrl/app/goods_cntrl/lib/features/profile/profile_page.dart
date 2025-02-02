@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'view_model/profile_viewmodel.dart';
-import 'widgets/profile_body.dart';
+import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';
+import 'package:goods_cntrl/features/profile/widgets/profile_body.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({

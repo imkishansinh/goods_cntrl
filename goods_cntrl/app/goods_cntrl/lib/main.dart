@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:goods_cntrl/app/app.dart';
+import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:provider/provider.dart';
 
-import 'app/app.dart';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import 'dependencies/dependencies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

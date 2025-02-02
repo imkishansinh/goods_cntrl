@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goods_cntrl/router/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../../../router/routes.dart';
 
 class SettingBody extends StatefulWidget {
   const SettingBody({super.key});

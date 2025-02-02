@@ -1,13 +1,12 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:goods_cntrl/features/landing/view_model/landing_viewmodel.dart';
+import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
+import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';
 import 'package:goods_cntrl/utilities/secure_storage/secure_session.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../features/login/view_model/login_viewmodel.dart';
-import '../features/profile/view_model/profile_viewmodel.dart';
 
 var logger = Logger('Logger');
 

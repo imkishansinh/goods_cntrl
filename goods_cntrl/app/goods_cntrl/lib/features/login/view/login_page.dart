@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/dependencies/dependencies.dart';
+import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/features/login/widgets/login_body.dart';
 import 'package:goods_cntrl/router/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../view_model/login_viewmodel.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({

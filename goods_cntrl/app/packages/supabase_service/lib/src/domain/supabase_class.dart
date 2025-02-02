@@ -1,6 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-
-import '../data/model/supa_user_table_model.dart';
+import 'package:supabase_service/src/data/model/supa_user_table_model.dart';
 
 abstract class SupabaseClass {
   /// Basic auth methods

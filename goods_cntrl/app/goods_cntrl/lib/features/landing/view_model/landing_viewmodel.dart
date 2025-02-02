@@ -1,9 +1,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:goods_cntrl/router/routes.dart';
+import 'package:goods_cntrl/utilities/command.dart';
+import 'package:goods_cntrl/utilities/result.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../../../utilities/command.dart';
-import '../../../utilities/result.dart';
 
 class LandingViewmodel {
   LandingViewmodel({

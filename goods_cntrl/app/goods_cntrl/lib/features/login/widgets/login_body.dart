@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:goods_cntrl/core/dimens.dart';
+import 'package:goods_cntrl/core/widgets/common_widgets.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/utilities/result.dart';
 import 'package:provider/provider.dart';
-
-import '../../../core/widgets/common_widgets.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -166,7 +165,7 @@ class _LoginBodyState extends State<LoginBody> {
                   context.read<LoginViewmodel>().sendOTPToEmail.running;
               return isEmailHintPromptRunning
                   ? Container(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withAlpha(25),
                       child: const Center(
                         child: CircularProgressIndicator(),
                       ),

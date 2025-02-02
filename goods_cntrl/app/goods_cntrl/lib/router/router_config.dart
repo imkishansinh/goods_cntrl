@@ -1,14 +1,13 @@
 import 'package:go_router/go_router.dart';
+import 'package:goods_cntrl/features/home/view/home_page.dart';
+import 'package:goods_cntrl/features/landing/view/landing_page.dart';
 import 'package:goods_cntrl/features/login/view/login_page.dart';
 import 'package:goods_cntrl/features/profile/profile_page.dart';
+import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';
 import 'package:goods_cntrl/features/setting/view/setting_page.dart';
+import 'package:goods_cntrl/router/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_service/supabase_service.dart';
-
-import '../features/home/view/home_page.dart';
-import '../features/landing/view/landing_page.dart';
-import '../features/profile/view_model/profile_viewmodel.dart';
-import 'routes.dart';
 
 /// The route configuration.
 final GoRouter routerConfig = GoRouter(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goods_cntrl/core/dimens.dart';
-
-import '../../../core/widgets/common_widgets.dart';
+import 'package:goods_cntrl/core/widgets/common_widgets.dart';
 
 class LandingBody extends StatelessWidget {
   const LandingBody({super.key});
