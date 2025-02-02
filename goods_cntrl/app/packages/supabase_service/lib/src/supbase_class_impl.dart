@@ -62,22 +62,14 @@ class SupabaseClassImpl implements SupabaseClass {
   }
 
   @override
-  Future fetchProfile() {
-    // _supabase.from(_userTable).select().eq(
-    //       'id',
-    //       'value',
-    //     );
-    return Future.value();
+  Future<List<Map<String, dynamic>>> fetchProfile() async {
+    final data = await _supabase.from(_userTable).select().eq(
+          'email',
+          currentUser!.email!,
+        );
+    return Future.value(data);
   }
 }
-
-// class SupabaseDb {
-//   Future registerNewUser(String email) async {
-//     _supabase.from(_userTable).insert(
-//           SupaUserTableModel(email).toJson(),
-//         );
-//   }
-// }
 
 const String _userTable = 'users';
 // const String _businessTable = 'business';

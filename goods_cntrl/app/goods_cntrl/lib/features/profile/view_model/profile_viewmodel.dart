@@ -13,6 +13,7 @@ class ProfileViewmodel {
   late final Command0 fetchProfile;
 
   Future<Result<bool>> _fetchProfile() async {
+    await supaService.fetchProfile();
     return Result.ok(true);
   }
 }

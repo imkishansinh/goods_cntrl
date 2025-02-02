@@ -21,5 +21,5 @@ abstract class SupabaseClass {
   /// Dabase methods
   Future registerNewUser(SupaUserTableModel userTable);
 
-  Future fetchProfile();
+  Future<List<Map<String, dynamic>>> fetchProfile();
 }
