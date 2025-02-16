@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';
+import 'package:goods_cntrl/utilities/result.dart';
 import 'package:provider/provider.dart';
 
 class ProfileBody extends StatefulWidget {
@@ -22,6 +23,30 @@ class _ProfileBodyState extends State<ProfileBody> {
     return ListenableBuilder(
       listenable: context.read<ProfileViewmodel>().fetchProfile,
       builder: (context, _) {
+        if (context.read<ProfileViewmodel>().fetchProfile.running) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (context.read<ProfileViewmodel>().fetchProfile.error) {
+          return Center(
+            child: Text(
+              'Something went wrong',
+            ),
+          );
+        }
+
+        if (context.read<ProfileViewmodel>().fetchProfile is Error) {
+          return Center(
+            child: Text(
+              'Something went wrong',
+            ),
+          );
+        }
+
+        final profileData =
+            (context.read<ProfileViewmodel>().fetchProfile.result as Ok).value;
+
         return Form(
           child: Padding(
             padding: const EdgeInsets.all(SizeDimens.small),
@@ -41,9 +66,13 @@ class _ProfileBodyState extends State<ProfileBody> {
                   ),
                 ),
                 TextFormField(
+                  enabled: false,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     border: OutlineInputBorder(),
+                  ),
+                  controller: TextEditingController(
+                    text: profileData.email,
                   ),
                 ),
                 TextFormField(
