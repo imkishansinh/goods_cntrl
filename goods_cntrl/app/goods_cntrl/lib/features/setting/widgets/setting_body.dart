@@ -27,7 +27,7 @@ class _SettingBodyState extends State<SettingBody> {
         ListTile(
           title: Text('Logout'),
           onTap: () {
-            context.read<SupabaseClass>().signout().then(
+            context.read<SupabaseContract>().signout().then(
                   _navigateToLogin,
                 );
           },

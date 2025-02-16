@@ -35,9 +35,10 @@ class _HomePageState extends State<HomePage> {
     logger.info('Registering user');
 
     context
-        .read<SupabaseClass>()
+        .read<SupabaseContract>()
         .registerNewUser(
-          SupaUserTableModel(context.read<SupabaseClass>().currentUser!.email!),
+          SupaUserTableModel(
+              context.read<SupabaseContract>().currentUser!.email!),
         )
         .then(_saveUserSession);
   }
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: Text('GoodsCntrl'),
         actions: [
-          if (context.read<SupabaseClass>().isAuthenticated)
+          if (context.read<SupabaseContract>().isAuthenticated)
             IconButton(
               onPressed: () {
                 context.pushNamed(Routes.setting.name.toString());

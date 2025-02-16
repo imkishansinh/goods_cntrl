@@ -2,7 +2,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_service/src/data/model/supa_user_table_model.dart';
 
 // Supabase contract class
-abstract class SupabaseClass {
+abstract class SupabaseContract {
   /// Basic auth methods
   Future init(
     String supabaseUrl,

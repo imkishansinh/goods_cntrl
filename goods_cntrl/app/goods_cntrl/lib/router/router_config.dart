@@ -54,7 +54,7 @@ final GoRouter routerConfig = GoRouter(
               builder: (context, state) {
                 return Provider(
                   create: (context) => ProfileViewmodel(
-                    supaService: context.read<SupabaseClass>(),
+                    supaService: context.read<SupabaseContract>(),
                   ),
                   child: ProfilePage(
                     viewModel: context.read(),

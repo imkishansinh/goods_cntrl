@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_service/src/data/model/supa_user_table_model.dart';
-import 'package:supabase_service/src/domain/supabase_class.dart';
+import 'package:supabase_service/src/domain/supabase_contract.dart';
 
 final _supabase = Supabase.instance.client;
 
-class SupabaseClassImpl implements SupabaseClass {
-  SupabaseClassImpl(this.redirectURL);
+class SupabaseClass implements SupabaseContract {
+  SupabaseClass(this.redirectURL);
 
   final String redirectURL;
 

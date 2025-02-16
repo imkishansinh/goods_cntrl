@@ -10,7 +10,7 @@ class ProfileViewmodel {
     fetchProfile = Command0(_fetchProfile);
   }
 
-  final SupabaseClass supaService;
+  final SupabaseContract supaService;
   late final Command0 fetchProfile;
 
   Future<Result<ProfileModel>> _fetchProfile() async {

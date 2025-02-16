@@ -12,7 +12,7 @@ class LandingViewmodel {
   }
 
   late final Command0 runLandingLogic;
-  final SupabaseClass supaService;
+  final SupabaseContract supaService;
 
   Future<Result<AppRoute>> _performLandingLogic() async {
     if (supaService.isAuthenticated) {

@@ -10,7 +10,7 @@ class LoginViewmodel {
     sendOTPToEmail = Command1(_signInViaEmailOTP);
     emailHintPrompt = Command0(_emailHintPrompt);
   }
-  final SupabaseClass supaService;
+  final SupabaseContract supaService;
 
   late final Command1<bool, String> sendOTPToEmail;
 

@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     widget.viewModel.sendOTPToEmail.addListener(_sendOTPToEmailListener);
-    context.read<SupabaseClass>().authStream.listen(_authListener);
+    context.read<SupabaseContract>().authStream.listen(_authListener);
     // Future.delayed(Duration(seconds: 1)).then(_emailPrompt);
   }
 
