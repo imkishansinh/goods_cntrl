@@ -182,15 +182,19 @@ ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProfileModel {
+  @JsonKey(name: 'first_name')
   String? get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_name')
   String? get lastName => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get mobile => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_status')
-  String get userStatus => throw _privateConstructorUsedError;
+  String? get userStatus => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
-  String? get userRole => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_role')
+  UserRole? get userRole => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   String? get photo => throw _privateConstructorUsedError;
 
@@ -211,15 +215,15 @@ abstract class $ProfileModelCopyWith<$Res> {
       _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
   $Res call(
-      {String? firstName,
-      String? lastName,
+      {@JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'last_name') String? lastName,
       String? gender,
       String email,
       String? mobile,
-      @JsonKey(name: 'user_status') String userStatus,
+      @JsonKey(name: 'user_status') String? userStatus,
       String? address,
-      String? userRole,
-      DateTime? createdAt,
+      @JsonKey(name: 'user_role') UserRole? userRole,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
       String? photo});
 }
 
@@ -243,7 +247,7 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
     Object? gender = freezed,
     Object? email = null,
     Object? mobile = freezed,
-    Object? userStatus = null,
+    Object? userStatus = freezed,
     Object? address = freezed,
     Object? userRole = freezed,
     Object? createdAt = freezed,
@@ -270,10 +274,10 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
           ? _value.mobile
           : mobile // ignore: cast_nullable_to_non_nullable
               as String?,
-      userStatus: null == userStatus
+      userStatus: freezed == userStatus
           ? _value.userStatus
           : userStatus // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -281,7 +285,7 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
       userRole: freezed == userRole
           ? _value.userRole
           : userRole // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UserRole?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -303,15 +307,15 @@ abstract class _$$ProfileModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? firstName,
-      String? lastName,
+      {@JsonKey(name: 'first_name') String? firstName,
+      @JsonKey(name: 'last_name') String? lastName,
       String? gender,
       String email,
       String? mobile,
-      @JsonKey(name: 'user_status') String userStatus,
+      @JsonKey(name: 'user_status') String? userStatus,
       String? address,
-      String? userRole,
-      DateTime? createdAt,
+      @JsonKey(name: 'user_role') UserRole? userRole,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
       String? photo});
 }
 
@@ -333,7 +337,7 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
     Object? gender = freezed,
     Object? email = null,
     Object? mobile = freezed,
-    Object? userStatus = null,
+    Object? userStatus = freezed,
     Object? address = freezed,
     Object? userRole = freezed,
     Object? createdAt = freezed,
@@ -360,10 +364,10 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
           ? _value.mobile
           : mobile // ignore: cast_nullable_to_non_nullable
               as String?,
-      userStatus: null == userStatus
+      userStatus: freezed == userStatus
           ? _value.userStatus
           : userStatus // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -371,7 +375,7 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
       userRole: freezed == userRole
           ? _value.userRole
           : userRole // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UserRole?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -388,23 +392,25 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileModelImpl implements _ProfileModel {
   const _$ProfileModelImpl(
-      {this.firstName,
-      this.lastName,
+      {@JsonKey(name: 'first_name') this.firstName,
+      @JsonKey(name: 'last_name') this.lastName,
       this.gender,
       required this.email,
       this.mobile,
-      @JsonKey(name: 'user_status') required this.userStatus,
+      @JsonKey(name: 'user_status') this.userStatus,
       this.address,
-      this.userRole,
-      this.createdAt,
+      @JsonKey(name: 'user_role') this.userRole,
+      @JsonKey(name: 'created_at') this.createdAt,
       this.photo});
 
   factory _$ProfileModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileModelImplFromJson(json);
 
   @override
+  @JsonKey(name: 'first_name')
   final String? firstName;
   @override
+  @JsonKey(name: 'last_name')
   final String? lastName;
   @override
   final String? gender;
@@ -414,12 +420,14 @@ class _$ProfileModelImpl implements _ProfileModel {
   final String? mobile;
   @override
   @JsonKey(name: 'user_status')
-  final String userStatus;
+  final String? userStatus;
   @override
   final String? address;
   @override
-  final String? userRole;
+  @JsonKey(name: 'user_role')
+  final UserRole? userRole;
   @override
+  @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
   final String? photo;
@@ -474,23 +482,25 @@ class _$ProfileModelImpl implements _ProfileModel {
 
 abstract class _ProfileModel implements ProfileModel {
   const factory _ProfileModel(
-      {final String? firstName,
-      final String? lastName,
+      {@JsonKey(name: 'first_name') final String? firstName,
+      @JsonKey(name: 'last_name') final String? lastName,
       final String? gender,
       required final String email,
       final String? mobile,
-      @JsonKey(name: 'user_status') required final String userStatus,
+      @JsonKey(name: 'user_status') final String? userStatus,
       final String? address,
-      final String? userRole,
-      final DateTime? createdAt,
+      @JsonKey(name: 'user_role') final UserRole? userRole,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
       final String? photo}) = _$ProfileModelImpl;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$ProfileModelImpl.fromJson;
 
   @override
+  @JsonKey(name: 'first_name')
   String? get firstName;
   @override
+  @JsonKey(name: 'last_name')
   String? get lastName;
   @override
   String? get gender;
@@ -500,12 +510,14 @@ abstract class _ProfileModel implements ProfileModel {
   String? get mobile;
   @override
   @JsonKey(name: 'user_status')
-  String get userStatus;
+  String? get userStatus;
   @override
   String? get address;
   @override
-  String? get userRole;
+  @JsonKey(name: 'user_role')
+  UserRole? get userRole;
   @override
+  @JsonKey(name: 'created_at')
   DateTime? get createdAt;
   @override
   String? get photo;

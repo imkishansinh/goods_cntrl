@@ -73,6 +73,21 @@ class SupabaseClass implements SupabaseContract {
         .single();
     return Future.value(data);
   }
+
+  @override
+  Future<Map<String, dynamic>> updateProfile(Map<String, dynamic> profile) {
+    return _supabase
+        .from(_userTable)
+        .update({
+          'first_name': profile['first_name'],
+          'last_name': profile['last_name'],
+          'mobile': profile['mobile'],
+        })
+        .eq('email', currentUser!.email!)
+        .select()
+        .single()
+        .then((value) => value);
+  }
 }
 
 const String _userTable = 'users';
