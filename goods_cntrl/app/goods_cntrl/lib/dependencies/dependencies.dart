@@ -12,7 +12,7 @@ var logger = Logger('Logger');
 
 List<SingleChildWidget> get thirdPartyServiceProviders => [
       Provider(
-        create: (_) => SupabaseClass(
+        create: (_) => SupabaseContractImpl(
           dotenv.env['supbase_redirect_url'] ?? '',
         ),
       ),
@@ -21,7 +21,7 @@ List<SingleChildWidget> get thirdPartyServiceProviders => [
 List<SingleChildWidget> get allTheProviders => [
       // ...thirdPartyServiceProviders,
       Provider.value(
-        value: SupabaseClass(
+        value: SupabaseContractImpl(
           dotenv.env['supbase_redirect_url'] ?? '',
         ) as SupabaseContract,
       ),

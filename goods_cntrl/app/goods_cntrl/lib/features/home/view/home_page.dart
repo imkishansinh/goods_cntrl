@@ -37,9 +37,7 @@ class _HomePageState extends State<HomePage> {
     context
         .read<SupabaseContract>()
         .registerNewUser(
-          SupaUserTableModel(
-            context.read<SupabaseContract>().currentUser!.email!,
-          ),
+          context.read<SupabaseContract>().currentUser!.email!,
         )
         .then(_saveUserSession);
   }

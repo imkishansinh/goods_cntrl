@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:supabase_service/src/data/model/supa_user_table_model.dart';
 import 'package:supabase_service/src/domain/supabase_contract.dart';
 
 final _supabase = Supabase.instance.client;
 
-class SupabaseClass implements SupabaseContract {
-  SupabaseClass(this.redirectURL);
+class SupabaseContractImpl implements SupabaseContract {
+  SupabaseContractImpl(this.redirectURL);
 
   final String redirectURL;
 
@@ -54,20 +53,32 @@ class SupabaseClass implements SupabaseContract {
   Stream<AuthState> get authStream => _supabase.auth.onAuthStateChange;
 
   @override
-  Future registerNewUser(SupaUserTableModel userModel) {
+  Future registerNewUser(String email) {
     if (_supabase.auth.currentUser == null) {
       throw Exception('User not authenticated');
     }
-    return Future.value(_supabase.from(_userTable).insert(userModel.toJson()));
+    return Future.value(
+      _supabase
+          .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
+          .insert({
+        SupabaseMapping.getColumnKeyName(
+          SupabaseTables.userTable,
+          SupabaseColumns.email,
+        ): email,
+      }),
+    );
   }
 
   @override
   Future<Map<String, dynamic>> fetchProfile() async {
     final data = await _supabase
-        .from(_userTable)
+        .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
         .select()
         .eq(
-          'email',
+          SupabaseMapping.getColumnKeyName(
+            SupabaseTables.userTable,
+            SupabaseColumns.email,
+          ),
           currentUser!.email!,
         )
         .single();
@@ -77,20 +88,30 @@ class SupabaseClass implements SupabaseContract {
   @override
   Future<Map<String, dynamic>> updateProfile(Map<String, dynamic> profile) {
     return _supabase
-        .from(_userTable)
+        .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
         .update({
-          'first_name': profile['first_name'],
-          'last_name': profile['last_name'],
-          'mobile': profile['mobile'],
+          SupabaseMapping.getColumnKeyName(
+            SupabaseTables.userTable,
+            SupabaseColumns.firstName,
+          ): profile['first_name'],
+          SupabaseMapping.getColumnKeyName(
+            SupabaseTables.userTable,
+            SupabaseColumns.lastName,
+          ): profile['last_name'],
+          SupabaseMapping.getColumnKeyName(
+            SupabaseTables.userTable,
+            SupabaseColumns.mobile,
+          ): profile['mobile'],
         })
-        .eq('email', currentUser!.email!)
+        .eq(
+          SupabaseMapping.getColumnKeyName(
+            SupabaseTables.userTable,
+            SupabaseColumns.email,
+          ),
+          currentUser!.email!,
+        )
         .select()
         .single()
         .then((value) => value);
   }
 }
-
-const String _userTable = 'users';
-// const String _businessTable = 'business';
-// const String _userBusinessesTable = 'user_businesses';
-// const String _businessFollowsTable = 'business_follows';
