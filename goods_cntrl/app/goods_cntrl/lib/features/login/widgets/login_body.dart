@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/core/widgets/common_widgets.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
@@ -38,11 +39,12 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   void _sendOTPToEmailListener() {
+    final l10n = AppLocalizations.of(context)!;
     if (context.read<LoginViewmodel>().sendOTPToEmail.completed &&
         !context.read<LoginViewmodel>().sendOTPToEmail.error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Email is sent to your email address'),
+          content: Text(l10n.emailIsSentMsg),
         ),
       );
     }
@@ -50,6 +52,8 @@ class _LoginBodyState extends State<LoginBody> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return SafeArea(
       child: Stack(
         children: [
@@ -61,12 +65,17 @@ class _LoginBodyState extends State<LoginBody> {
                 AppIcon(
                   iconSize: SizeDimens.xxLarge,
                 ),
+                Text(
+                  l10n.welcomeMessage,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(height: SizeDimens.medium),
                 TextFormField(
                   controller: _emailCntrl,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    hintText: 'Email',
+                    hintText: l10n.email,
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
@@ -79,7 +88,7 @@ class _LoginBodyState extends State<LoginBody> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          'Choose email from the list',
+                          l10n.chooseEmailFromList,
                           textAlign: TextAlign.end,
                           style: Theme.of(context)
                               .textTheme
@@ -103,7 +112,7 @@ class _LoginBodyState extends State<LoginBody> {
                         _emailCntrl.clear();
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
-                      child: Text('Cancel'),
+                      child: Text(l10n.cancel),
                     ),
                     ListenableBuilder(
                       listenable: context.read<LoginViewmodel>().sendOTPToEmail,
@@ -120,7 +129,7 @@ class _LoginBodyState extends State<LoginBody> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Please enter email address or choose from the list',
+                                          l10n.pleaseEnterEmailAddressOrChooseFromList,
                                         ),
                                       ),
                                     );
@@ -131,7 +140,7 @@ class _LoginBodyState extends State<LoginBody> {
                                       .sendOTPToEmail
                                       .execute(_emailCntrl.text);
                                 },
-                          child: Text('Login'),
+                          child: Text(l10n.login),
                         );
                       },
                     ),
@@ -152,7 +161,7 @@ class _LoginBodyState extends State<LoginBody> {
                     size: SizeDimens.large,
                   ),
                   Text(
-                    'Scan business QR code',
+                    l10n.scanBusinessQRCode,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ],

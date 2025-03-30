@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/router/routes.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:supabase_service/supabase_service.dart';
 
 class SettingBody extends StatefulWidget {
@@ -16,16 +17,18 @@ class SettingBody extends StatefulWidget {
 class _SettingBodyState extends State<SettingBody> {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return ListView(
       children: [
         ListTile(
-          title: Text('Profile'),
+          title: Text(l10n.profile),
           onTap: () {
             _navigateToProfile();
           },
         ),
         ListTile(
-          title: Text('Logout'),
+          title: Text(l10n.logout),
           onTap: () {
             context.read<SupabaseContract>().signout().then(
                   _navigateToLogin,

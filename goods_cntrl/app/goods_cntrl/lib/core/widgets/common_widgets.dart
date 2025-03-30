@@ -16,7 +16,7 @@ class AppIcon extends StatelessWidget {
     return Icon(
       appIconData,
       size: iconSize,
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 }

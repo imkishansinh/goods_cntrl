@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/domain/profile/model/profile_model.dart';
@@ -27,6 +28,8 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return ListenableBuilder(
       listenable: Listenable.merge([
         context.read<ProfileViewmodel>().fetchProfile,
@@ -90,21 +93,21 @@ class _ProfileBodyState extends State<ProfileBody> {
                 TextFormField(
                   controller: _firstNameController,
                   decoration: InputDecoration(
-                    hintText: 'First Name',
+                    hintText: l10n.firstName,
                     border: OutlineInputBorder(),
                   ),
                 ),
                 TextFormField(
                   controller: _lastNameController,
                   decoration: InputDecoration(
-                    hintText: 'Last Name',
+                    hintText: l10n.lastName,
                     border: OutlineInputBorder(),
                   ),
                 ),
                 TextFormField(
                   enabled: false,
                   decoration: InputDecoration(
-                    hintText: 'Email',
+                    hintText: l10n.email,
                     border: OutlineInputBorder(),
                   ),
                   controller: _emailController,
@@ -112,7 +115,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                 TextFormField(
                   controller: _phoneNumberController,
                   decoration: InputDecoration(
-                    hintText: 'Phone Number',
+                    hintText: l10n.phoneNumber,
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -121,7 +124,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   children: [
                     OutlinedButton(
                       onPressed: () {},
-                      child: Text('Cancel'),
+                      child: Text(l10n.cancel),
                     ),
                     FilledButton(
                       onPressed: () {
@@ -134,7 +137,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               ),
                             );
                       },
-                      child: Text('Save'),
+                      child: Text(l10n.save),
                     ),
                   ],
                 ),
