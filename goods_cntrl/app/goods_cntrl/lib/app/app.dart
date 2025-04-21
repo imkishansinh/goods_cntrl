@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:goods_cntrl/core/dimens.dart';
-import 'package:goods_cntrl/router/router_config.dart';
+import 'package:goods_cntrl/app/app_router/router_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {

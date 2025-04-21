@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/core/dimens.dart';
+import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:goods_cntrl/domain/profile/model/profile_model.dart';
 import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';
 import 'package:goods_cntrl/utilities/result.dart';
-import 'package:provider/provider.dart';
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({super.key});
@@ -19,11 +19,13 @@ class _ProfileBodyState extends State<ProfileBody> {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
+  late ProfileViewmodel profileViewmodel;
 
   @override
   void initState() {
     super.initState();
-    context.read<ProfileViewmodel>().fetchProfile.execute();
+    profileViewmodel = locator.get<ProfileViewmodel>();
+    profileViewmodel.fetchProfile.execute();
   }
 
   @override
@@ -32,52 +34,35 @@ class _ProfileBodyState extends State<ProfileBody> {
 
     return ListenableBuilder(
       listenable: Listenable.merge([
-        context.read<ProfileViewmodel>().fetchProfile,
-        context.read<ProfileViewmodel>().updateProfile,
+        profileViewmodel.fetchProfile,
+        profileViewmodel.updateProfile,
       ]),
       builder: (context, _) {
-        if (context.read<ProfileViewmodel>().updateProfile.running) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+        if (profileViewmodel.updateProfile.running) {
+          return const Center(child: CircularProgressIndicator());
         }
 
-        if (context.read<ProfileViewmodel>().updateProfile.error) {
-          return Center(
-            child: Text(
-              'Something went wrong',
-            ),
-          );
+        if (profileViewmodel.updateProfile.error) {
+          return Center(child: Text('Something went wrong'));
         }
 
-        if (context.read<ProfileViewmodel>().updateProfile.completed) {
+        if (profileViewmodel.updateProfile.completed) {
           context.pop();
           return const SizedBox.shrink();
         }
 
-        if (context.read<ProfileViewmodel>().fetchProfile.running) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+        if (profileViewmodel.fetchProfile.running) {
+          return const Center(child: CircularProgressIndicator());
         }
-        if (context.read<ProfileViewmodel>().fetchProfile.error) {
-          return Center(
-            child: Text(
-              'Something went wrong',
-            ),
-          );
+        if (profileViewmodel.fetchProfile.error) {
+          return Center(child: Text('Something went wrong'));
         }
 
-        if (context.read<ProfileViewmodel>().fetchProfile is Error) {
-          return Center(
-            child: Text(
-              'Something went wrong',
-            ),
-          );
+        if (profileViewmodel.fetchProfile is Error) {
+          return Center(child: Text('Something went wrong'));
         }
 
-        final profileData =
-            (context.read<ProfileViewmodel>().fetchProfile.result as Ok).value;
+        final profileData = (profileViewmodel.fetchProfile.result as Ok).value;
 
         _emailController.text = profileData.email;
         _firstNameController.text = profileData.firstName ?? '';
@@ -122,20 +107,17 @@ class _ProfileBodyState extends State<ProfileBody> {
                 Row(
                   spacing: SizeDimens.small,
                   children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text(l10n.cancel),
-                    ),
+                    OutlinedButton(onPressed: () {}, child: Text(l10n.cancel)),
                     FilledButton(
                       onPressed: () {
-                        context.read<ProfileViewmodel>().updateProfile.execute(
-                              ProfileModel.updateProfile(
-                                firstName: _firstNameController.text,
-                                lastName: _lastNameController.text,
-                                email: _emailController.text,
-                                mobile: _phoneNumberController.text,
-                              ),
-                            );
+                        profileViewmodel.updateProfile.execute(
+                          ProfileModel.updateProfile(
+                            firstName: _firstNameController.text,
+                            lastName: _lastNameController.text,
+                            email: _emailController.text,
+                            mobile: _phoneNumberController.text,
+                          ),
+                        );
                       },
                       child: Text(l10n.save),
                     ),

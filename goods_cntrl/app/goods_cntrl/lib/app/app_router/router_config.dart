@@ -1,13 +1,13 @@
 import 'package:go_router/go_router.dart';
+import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:goods_cntrl/features/home/view/home_page.dart';
 import 'package:goods_cntrl/features/landing/view/landing_page.dart';
 import 'package:goods_cntrl/features/login/view/login_page.dart';
+import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/features/profile/profile_page.dart';
 import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';
 import 'package:goods_cntrl/features/setting/view/setting_page.dart';
 import 'package:goods_cntrl/router/routes.dart';
-import 'package:provider/provider.dart';
-import 'package:supabase_service/supabase_service.dart';
 
 /// The route configuration.
 final GoRouter routerConfig = GoRouter(
@@ -18,18 +18,14 @@ final GoRouter routerConfig = GoRouter(
       path: Routes.root.path,
       name: Routes.root.name.toString(),
       builder: (context, state) {
-        return LandingPage(
-          viewModel: context.read(),
-        );
+        return LandingPage();
       },
     ),
     GoRoute(
       path: Routes.login.path,
       name: Routes.login.name.toString(),
       builder: (context, state) {
-        return LoginPage(
-          viewModel: context.read(),
-        );
+        return LoginPage(viewModel: locator.get<LoginViewmodel>());
       },
     ),
     GoRoute(
@@ -43,23 +39,14 @@ final GoRouter routerConfig = GoRouter(
           path: Routes.setting.path,
           name: Routes.setting.name.toString(),
           builder: (context, state) {
-            return SettingPage(
-              viewModel: context.read(),
-            );
+            return SettingPage(viewModel: locator.get<LoginViewmodel>());
           },
           routes: [
             GoRoute(
               path: Routes.profile.path,
               name: Routes.profile.name.toString(),
               builder: (context, state) {
-                return Provider(
-                  create: (context) => ProfileViewmodel(
-                    supaService: context.read<SupabaseContract>(),
-                  ),
-                  child: ProfilePage(
-                    viewModel: context.read(),
-                  ),
-                );
+                return ProfilePage(viewModel: locator.get<ProfileViewmodel>());
               },
             ),
           ],

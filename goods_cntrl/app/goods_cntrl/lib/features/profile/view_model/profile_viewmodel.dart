@@ -1,8 +1,10 @@
 import 'package:goods_cntrl/domain/profile/model/profile_model.dart';
 import 'package:goods_cntrl/utilities/command.dart';
 import 'package:goods_cntrl/utilities/result.dart';
+import 'package:injectable/injectable.dart';
 import 'package:supabase_service/supabase_service.dart';
 
+@injectable
 class ProfileViewmodel {
   ProfileViewmodel({
     required this.supaService,

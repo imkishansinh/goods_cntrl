@@ -7,18 +7,17 @@ part of 'profile_model.dart';
 // **************************************************************************
 
 _$ProfileModelListImpl _$$ProfileModelListImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ProfileModelListImpl(
-      profileModelList: (json['profileModelList'] as List<dynamic>)
+  Map<String, dynamic> json,
+) => _$ProfileModelListImpl(
+  profileModelList:
+      (json['profileModelList'] as List<dynamic>)
           .map((e) => ProfileModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-    );
+);
 
 Map<String, dynamic> _$$ProfileModelListImplToJson(
-        _$ProfileModelListImpl instance) =>
-    <String, dynamic>{
-      'profileModelList': instance.profileModelList,
-    };
+  _$ProfileModelListImpl instance,
+) => <String, dynamic>{'profileModelList': instance.profileModelList};
 
 _$ProfileModelImpl _$$ProfileModelImplFromJson(Map<String, dynamic> json) =>
     _$ProfileModelImpl(
@@ -30,9 +29,10 @@ _$ProfileModelImpl _$$ProfileModelImplFromJson(Map<String, dynamic> json) =>
       userStatus: json['user_status'] as String?,
       address: json['address'] as String?,
       userRole: $enumDecodeNullable(_$UserRoleEnumMap, json['user_role']),
-      createdAt: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
+      createdAt:
+          json['created_at'] == null
+              ? null
+              : DateTime.parse(json['created_at'] as String),
       photo: json['photo'] as String?,
     );
 

@@ -12,7 +12,8 @@ part of 'profile_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ProfileModelList _$ProfileModelListFromJson(Map<String, dynamic> json) {
   return _ProfileModelList.fromJson(json);
@@ -35,8 +36,9 @@ mixin _$ProfileModelList {
 /// @nodoc
 abstract class $ProfileModelListCopyWith<$Res> {
   factory $ProfileModelListCopyWith(
-          ProfileModelList value, $Res Function(ProfileModelList) then) =
-      _$ProfileModelListCopyWithImpl<$Res, ProfileModelList>;
+    ProfileModelList value,
+    $Res Function(ProfileModelList) then,
+  ) = _$ProfileModelListCopyWithImpl<$Res, ProfileModelList>;
   @useResult
   $Res call({List<ProfileModel> profileModelList});
 }
@@ -55,24 +57,27 @@ class _$ProfileModelListCopyWithImpl<$Res, $Val extends ProfileModelList>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? profileModelList = null,
-  }) {
-    return _then(_value.copyWith(
-      profileModelList: null == profileModelList
-          ? _value.profileModelList
-          : profileModelList // ignore: cast_nullable_to_non_nullable
-              as List<ProfileModel>,
-    ) as $Val);
+  $Res call({Object? profileModelList = null}) {
+    return _then(
+      _value.copyWith(
+            profileModelList:
+                null == profileModelList
+                    ? _value.profileModelList
+                    : profileModelList // ignore: cast_nullable_to_non_nullable
+                        as List<ProfileModel>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ProfileModelListImplCopyWith<$Res>
     implements $ProfileModelListCopyWith<$Res> {
-  factory _$$ProfileModelListImplCopyWith(_$ProfileModelListImpl value,
-          $Res Function(_$ProfileModelListImpl) then) =
-      __$$ProfileModelListImplCopyWithImpl<$Res>;
+  factory _$$ProfileModelListImplCopyWith(
+    _$ProfileModelListImpl value,
+    $Res Function(_$ProfileModelListImpl) then,
+  ) = __$$ProfileModelListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProfileModel> profileModelList});
@@ -82,32 +87,34 @@ abstract class _$$ProfileModelListImplCopyWith<$Res>
 class __$$ProfileModelListImplCopyWithImpl<$Res>
     extends _$ProfileModelListCopyWithImpl<$Res, _$ProfileModelListImpl>
     implements _$$ProfileModelListImplCopyWith<$Res> {
-  __$$ProfileModelListImplCopyWithImpl(_$ProfileModelListImpl _value,
-      $Res Function(_$ProfileModelListImpl) _then)
-      : super(_value, _then);
+  __$$ProfileModelListImplCopyWithImpl(
+    _$ProfileModelListImpl _value,
+    $Res Function(_$ProfileModelListImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProfileModelList
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? profileModelList = null,
-  }) {
-    return _then(_$ProfileModelListImpl(
-      profileModelList: null == profileModelList
-          ? _value._profileModelList
-          : profileModelList // ignore: cast_nullable_to_non_nullable
-              as List<ProfileModel>,
-    ));
+  $Res call({Object? profileModelList = null}) {
+    return _then(
+      _$ProfileModelListImpl(
+        profileModelList:
+            null == profileModelList
+                ? _value._profileModelList
+                : profileModelList // ignore: cast_nullable_to_non_nullable
+                    as List<ProfileModel>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProfileModelListImpl implements _ProfileModelList {
-  const _$ProfileModelListImpl(
-      {required final List<ProfileModel> profileModelList})
-      : _profileModelList = profileModelList;
+  const _$ProfileModelListImpl({
+    required final List<ProfileModel> profileModelList,
+  }) : _profileModelList = profileModelList;
 
   factory _$ProfileModelListImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileModelListImplFromJson(json);
@@ -131,14 +138,18 @@ class _$ProfileModelListImpl implements _ProfileModelList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileModelListImpl &&
-            const DeepCollectionEquality()
-                .equals(other._profileModelList, _profileModelList));
+            const DeepCollectionEquality().equals(
+              other._profileModelList,
+              _profileModelList,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_profileModelList));
+    runtimeType,
+    const DeepCollectionEquality().hash(_profileModelList),
+  );
 
   /// Create a copy of ProfileModelList
   /// with the given fields replaced by the non-null parameter values.
@@ -147,20 +158,20 @@ class _$ProfileModelListImpl implements _ProfileModelList {
   @pragma('vm:prefer-inline')
   _$$ProfileModelListImplCopyWith<_$ProfileModelListImpl> get copyWith =>
       __$$ProfileModelListImplCopyWithImpl<_$ProfileModelListImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProfileModelListImplToJson(
-      this,
-    );
+    return _$$ProfileModelListImplToJson(this);
   }
 }
 
 abstract class _ProfileModelList implements ProfileModelList {
-  const factory _ProfileModelList(
-          {required final List<ProfileModel> profileModelList}) =
-      _$ProfileModelListImpl;
+  const factory _ProfileModelList({
+    required final List<ProfileModel> profileModelList,
+  }) = _$ProfileModelListImpl;
 
   factory _ProfileModelList.fromJson(Map<String, dynamic> json) =
       _$ProfileModelListImpl.fromJson;
@@ -211,20 +222,22 @@ mixin _$ProfileModel {
 /// @nodoc
 abstract class $ProfileModelCopyWith<$Res> {
   factory $ProfileModelCopyWith(
-          ProfileModel value, $Res Function(ProfileModel) then) =
-      _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
+    ProfileModel value,
+    $Res Function(ProfileModel) then,
+  ) = _$ProfileModelCopyWithImpl<$Res, ProfileModel>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      String? gender,
-      String email,
-      String? mobile,
-      @JsonKey(name: 'user_status') String? userStatus,
-      String? address,
-      @JsonKey(name: 'user_role') UserRole? userRole,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      String? photo});
+  $Res call({
+    @JsonKey(name: 'first_name') String? firstName,
+    @JsonKey(name: 'last_name') String? lastName,
+    String? gender,
+    String email,
+    String? mobile,
+    @JsonKey(name: 'user_status') String? userStatus,
+    String? address,
+    @JsonKey(name: 'user_role') UserRole? userRole,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    String? photo,
+  });
 }
 
 /// @nodoc
@@ -253,48 +266,61 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
     Object? createdAt = freezed,
     Object? photo = freezed,
   }) {
-    return _then(_value.copyWith(
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      mobile: freezed == mobile
-          ? _value.mobile
-          : mobile // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userStatus: freezed == userStatus
-          ? _value.userStatus
-          : userStatus // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userRole: freezed == userRole
-          ? _value.userRole
-          : userRole // ignore: cast_nullable_to_non_nullable
-              as UserRole?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      photo: freezed == photo
-          ? _value.photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            firstName:
+                freezed == firstName
+                    ? _value.firstName
+                    : firstName // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            lastName:
+                freezed == lastName
+                    ? _value.lastName
+                    : lastName // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            gender:
+                freezed == gender
+                    ? _value.gender
+                    : gender // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            email:
+                null == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String,
+            mobile:
+                freezed == mobile
+                    ? _value.mobile
+                    : mobile // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            userStatus:
+                freezed == userStatus
+                    ? _value.userStatus
+                    : userStatus // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            address:
+                freezed == address
+                    ? _value.address
+                    : address // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            userRole:
+                freezed == userRole
+                    ? _value.userRole
+                    : userRole // ignore: cast_nullable_to_non_nullable
+                        as UserRole?,
+            createdAt:
+                freezed == createdAt
+                    ? _value.createdAt
+                    : createdAt // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            photo:
+                freezed == photo
+                    ? _value.photo
+                    : photo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -302,21 +328,23 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
 abstract class _$$ProfileModelImplCopyWith<$Res>
     implements $ProfileModelCopyWith<$Res> {
   factory _$$ProfileModelImplCopyWith(
-          _$ProfileModelImpl value, $Res Function(_$ProfileModelImpl) then) =
-      __$$ProfileModelImplCopyWithImpl<$Res>;
+    _$ProfileModelImpl value,
+    $Res Function(_$ProfileModelImpl) then,
+  ) = __$$ProfileModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      String? gender,
-      String email,
-      String? mobile,
-      @JsonKey(name: 'user_status') String? userStatus,
-      String? address,
-      @JsonKey(name: 'user_role') UserRole? userRole,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      String? photo});
+  $Res call({
+    @JsonKey(name: 'first_name') String? firstName,
+    @JsonKey(name: 'last_name') String? lastName,
+    String? gender,
+    String email,
+    String? mobile,
+    @JsonKey(name: 'user_status') String? userStatus,
+    String? address,
+    @JsonKey(name: 'user_role') UserRole? userRole,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    String? photo,
+  });
 }
 
 /// @nodoc
@@ -324,8 +352,9 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
     extends _$ProfileModelCopyWithImpl<$Res, _$ProfileModelImpl>
     implements _$$ProfileModelImplCopyWith<$Res> {
   __$$ProfileModelImplCopyWithImpl(
-      _$ProfileModelImpl _value, $Res Function(_$ProfileModelImpl) _then)
-      : super(_value, _then);
+    _$ProfileModelImpl _value,
+    $Res Function(_$ProfileModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
@@ -343,65 +372,78 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? photo = freezed,
   }) {
-    return _then(_$ProfileModelImpl(
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      mobile: freezed == mobile
-          ? _value.mobile
-          : mobile // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userStatus: freezed == userStatus
-          ? _value.userStatus
-          : userStatus // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userRole: freezed == userRole
-          ? _value.userRole
-          : userRole // ignore: cast_nullable_to_non_nullable
-              as UserRole?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      photo: freezed == photo
-          ? _value.photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ProfileModelImpl(
+        firstName:
+            freezed == firstName
+                ? _value.firstName
+                : firstName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        lastName:
+            freezed == lastName
+                ? _value.lastName
+                : lastName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        gender:
+            freezed == gender
+                ? _value.gender
+                : gender // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        email:
+            null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String,
+        mobile:
+            freezed == mobile
+                ? _value.mobile
+                : mobile // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        userStatus:
+            freezed == userStatus
+                ? _value.userStatus
+                : userStatus // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        address:
+            freezed == address
+                ? _value.address
+                : address // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        userRole:
+            freezed == userRole
+                ? _value.userRole
+                : userRole // ignore: cast_nullable_to_non_nullable
+                    as UserRole?,
+        createdAt:
+            freezed == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        photo:
+            freezed == photo
+                ? _value.photo
+                : photo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ProfileModelImpl implements _ProfileModel {
-  const _$ProfileModelImpl(
-      {@JsonKey(name: 'first_name') this.firstName,
-      @JsonKey(name: 'last_name') this.lastName,
-      this.gender,
-      required this.email,
-      this.mobile,
-      @JsonKey(name: 'user_status') this.userStatus,
-      this.address,
-      @JsonKey(name: 'user_role') this.userRole,
-      @JsonKey(name: 'created_at') this.createdAt,
-      this.photo});
+  const _$ProfileModelImpl({
+    @JsonKey(name: 'first_name') this.firstName,
+    @JsonKey(name: 'last_name') this.lastName,
+    this.gender,
+    required this.email,
+    this.mobile,
+    @JsonKey(name: 'user_status') this.userStatus,
+    this.address,
+    @JsonKey(name: 'user_role') this.userRole,
+    @JsonKey(name: 'created_at') this.createdAt,
+    this.photo,
+  });
 
   factory _$ProfileModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileModelImplFromJson(json);
@@ -461,8 +503,19 @@ class _$ProfileModelImpl implements _ProfileModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, firstName, lastName, gender,
-      email, mobile, userStatus, address, userRole, createdAt, photo);
+  int get hashCode => Object.hash(
+    runtimeType,
+    firstName,
+    lastName,
+    gender,
+    email,
+    mobile,
+    userStatus,
+    address,
+    userRole,
+    createdAt,
+    photo,
+  );
 
   /// Create a copy of ProfileModel
   /// with the given fields replaced by the non-null parameter values.
@@ -474,24 +527,23 @@ class _$ProfileModelImpl implements _ProfileModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProfileModelImplToJson(
-      this,
-    );
+    return _$$ProfileModelImplToJson(this);
   }
 }
 
 abstract class _ProfileModel implements ProfileModel {
-  const factory _ProfileModel(
-      {@JsonKey(name: 'first_name') final String? firstName,
-      @JsonKey(name: 'last_name') final String? lastName,
-      final String? gender,
-      required final String email,
-      final String? mobile,
-      @JsonKey(name: 'user_status') final String? userStatus,
-      final String? address,
-      @JsonKey(name: 'user_role') final UserRole? userRole,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      final String? photo}) = _$ProfileModelImpl;
+  const factory _ProfileModel({
+    @JsonKey(name: 'first_name') final String? firstName,
+    @JsonKey(name: 'last_name') final String? lastName,
+    final String? gender,
+    required final String email,
+    final String? mobile,
+    @JsonKey(name: 'user_status') final String? userStatus,
+    final String? address,
+    @JsonKey(name: 'user_role') final UserRole? userRole,
+    @JsonKey(name: 'created_at') final DateTime? createdAt,
+    final String? photo,
+  }) = _$ProfileModelImpl;
 
   factory _ProfileModel.fromJson(Map<String, dynamic> json) =
       _$ProfileModelImpl.fromJson;

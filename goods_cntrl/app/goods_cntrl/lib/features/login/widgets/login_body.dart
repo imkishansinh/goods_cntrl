@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/core/widgets/common_widgets.dart';
+import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/utilities/result.dart';
-import 'package:provider/provider.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -16,32 +16,27 @@ class LoginBody extends StatefulWidget {
 
 class _LoginBodyState extends State<LoginBody> {
   final TextEditingController _emailCntrl = TextEditingController();
+  late LoginViewmodel loginViewmodel;
 
   @override
   void initState() {
     super.initState();
-    context
-        .read<LoginViewmodel>()
-        .emailHintPrompt
-        .addListener(_emailPromotListener);
-    context
-        .read<LoginViewmodel>()
-        .sendOTPToEmail
-        .addListener(_sendOTPToEmailListener);
+    loginViewmodel = locator.get<LoginViewmodel>();
+    loginViewmodel.emailHintPrompt.addListener(_emailPromotListener);
+    loginViewmodel.sendOTPToEmail.addListener(_sendOTPToEmailListener);
   }
 
   void _emailPromotListener() {
-    if (context.read<LoginViewmodel>().emailHintPrompt.completed &&
-        !context.read<LoginViewmodel>().emailHintPrompt.error) {
-      _emailCntrl.text =
-          (context.read<LoginViewmodel>().emailHintPrompt.result as Ok).value;
+    if (loginViewmodel.emailHintPrompt.completed &&
+        !loginViewmodel.emailHintPrompt.error) {
+      _emailCntrl.text = (loginViewmodel.emailHintPrompt.result as Ok).value;
     }
   }
 
   void _sendOTPToEmailListener() {
     final l10n = AppLocalizations.of(context)!;
-    if (context.read<LoginViewmodel>().sendOTPToEmail.completed &&
-        !context.read<LoginViewmodel>().sendOTPToEmail.error) {
+    if (loginViewmodel.sendOTPToEmail.completed &&
+        !loginViewmodel.sendOTPToEmail.error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.emailIsSentMsg),
@@ -101,7 +96,7 @@ class _LoginBodyState extends State<LoginBody> {
                       ],
                     ),
                     onTap: () {
-                      context.read<LoginViewmodel>().emailHintPrompt.execute();
+                      loginViewmodel.emailHintPrompt.execute();
                     },
                   ),
                 Row(
@@ -115,12 +110,10 @@ class _LoginBodyState extends State<LoginBody> {
                       child: Text(l10n.cancel),
                     ),
                     ListenableBuilder(
-                      listenable: context.read<LoginViewmodel>().sendOTPToEmail,
+                      listenable: loginViewmodel.sendOTPToEmail,
                       builder: (context, child) {
-                        final isOTPSendingRunning = context
-                            .read<LoginViewmodel>()
-                            .sendOTPToEmail
-                            .running;
+                        final isOTPSendingRunning =
+                            loginViewmodel.sendOTPToEmail.running;
                         return FilledButton(
                           onPressed: isOTPSendingRunning
                               ? null
@@ -135,9 +128,7 @@ class _LoginBodyState extends State<LoginBody> {
                                     );
                                     return;
                                   }
-                                  context
-                                      .read<LoginViewmodel>()
-                                      .sendOTPToEmail
+                                  loginViewmodel.sendOTPToEmail
                                       .execute(_emailCntrl.text);
                                 },
                           child: Text(l10n.login),
@@ -168,10 +159,10 @@ class _LoginBodyState extends State<LoginBody> {
               ),
             ),
           ListenableBuilder(
-            listenable: context.read<LoginViewmodel>().emailHintPrompt,
+            listenable: loginViewmodel.emailHintPrompt,
             builder: (context, child) {
               final isEmailHintPromptRunning =
-                  context.read<LoginViewmodel>().sendOTPToEmail.running;
+                  loginViewmodel.sendOTPToEmail.running;
               return isEmailHintPromptRunning
                   ? Container(
                       color: Colors.black.withAlpha(25),

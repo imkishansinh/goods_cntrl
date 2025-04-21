@@ -5,7 +5,6 @@ import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/features/login/widgets/login_body.dart';
 import 'package:goods_cntrl/router/routes.dart';
-import 'package:provider/provider.dart';
 import 'package:supabase_service/supabase_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     widget.viewModel.sendOTPToEmail.addListener(_sendOTPToEmailListener);
-    context.read<SupabaseContract>().authStream.listen(_authListener);
+    locator.get<SupabaseContract>().authStream.listen(_authListener);
     // Future.delayed(Duration(seconds: 1)).then(_emailPrompt);
   }
 

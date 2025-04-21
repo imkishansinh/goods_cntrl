@@ -1,8 +1,10 @@
 import 'package:account_picker/account_picker.dart';
 import 'package:goods_cntrl/utilities/command.dart';
 import 'package:goods_cntrl/utilities/result.dart';
+import 'package:injectable/injectable.dart';
 import 'package:supabase_service/supabase_service.dart';
 
+@injectable
 class LoginViewmodel {
   LoginViewmodel({
     required this.supaService,

@@ -1,15 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_service/src/domain/supabase_contract.dart';
 
 final _supabase = Supabase.instance.client;
 
+@Singleton(as: SupabaseContract)
 class SupabaseContractImpl implements SupabaseContract {
-  SupabaseContractImpl(this.redirectURL);
-
-  final String redirectURL;
+  SupabaseContractImpl();
 
   bool _isInit = false;
   bool get isInit => _isInit;
@@ -34,7 +34,7 @@ class SupabaseContractImpl implements SupabaseContract {
   Future<void> signInWithEmailOTP(String email) async {
     return _supabase.auth.signInWithOtp(
       email: email,
-      emailRedirectTo: kIsWeb ? null : redirectURL,
+      emailRedirectTo: kIsWeb ? null : 'com.goodscntrl.app://login-callback/',
     );
   }
 

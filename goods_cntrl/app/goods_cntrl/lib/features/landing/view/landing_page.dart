@@ -6,25 +6,24 @@ import 'package:goods_cntrl/router/routes.dart';
 
 import 'package:goods_cntrl/features/landing/widgets/landing_body.dart';
 import 'package:goods_cntrl/utilities/result.dart';
-import 'package:provider/provider.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({
-    required this.viewModel,
     super.key,
   });
-
-  final LandingViewmodel viewModel;
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
+  late LandingViewmodel landingViewmodel;
   @override
   void initState() {
     super.initState();
-    context.read<LandingViewmodel>().userLandedFirst();
+    landingViewmodel = locator.get<LandingViewmodel>();
+
+    landingViewmodel.runLandingLogic.execute();
   }
 
   @override
@@ -32,14 +31,14 @@ class _LandingPageState extends State<LandingPage> {
     super.didChangeDependencies();
 
     /// Listen the same result
-    widget.viewModel.runLandingLogic.addListener(_runLandingLogic);
+    landingViewmodel.runLandingLogic.addListener(_runLandingLogic);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListenableBuilder(
-        listenable: widget.viewModel.runLandingLogic,
+        listenable: landingViewmodel.runLandingLogic,
         builder: (_, __) {
           return LandingBody();
         },
@@ -48,15 +47,15 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   void _runLandingLogic() {
-    if (widget.viewModel.runLandingLogic.completed) {
-      if (widget.viewModel.runLandingLogic.result is Ok<AppRoute>) {
+    if (landingViewmodel.runLandingLogic.completed) {
+      if (landingViewmodel.runLandingLogic.result is Ok<AppRoute>) {
         context.pushReplacementNamed(
-          (widget.viewModel.runLandingLogic.result as Ok<AppRoute>)
+          (landingViewmodel.runLandingLogic.result as Ok<AppRoute>)
               .value
               .name
               .toString(),
         );
-        widget.viewModel.runLandingLogic.clearResult();
+        landingViewmodel.runLandingLogic.clearResult();
       } else {
         logger.warning('Something wrong in landing logic');
       }

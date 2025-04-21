@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goods_cntrl/dependencies/dependencies.dart';
 import 'package:goods_cntrl/router/routes.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:supabase_service/supabase_service.dart';
 
@@ -30,9 +30,7 @@ class _SettingBodyState extends State<SettingBody> {
         ListTile(
           title: Text(l10n.logout),
           onTap: () {
-            context.read<SupabaseContract>().signout().then(
-                  _navigateToLogin,
-                );
+            locator.get<SupabaseContract>().signout().then(_navigateToLogin);
           },
         ),
       ],
