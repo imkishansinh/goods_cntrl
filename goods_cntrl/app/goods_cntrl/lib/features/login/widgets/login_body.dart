@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/core/widgets/common_widgets.dart';
-import 'package:goods_cntrl/dependencies/dependencies.dart';
+import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/utilities/result.dart';
 
@@ -37,11 +37,9 @@ class _LoginBodyState extends State<LoginBody> {
     final l10n = AppLocalizations.of(context)!;
     if (loginViewmodel.sendOTPToEmail.completed &&
         !loginViewmodel.sendOTPToEmail.error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(l10n.emailIsSentMsg),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.emailIsSentMsg)));
     }
   }
 
@@ -57,9 +55,7 @@ class _LoginBodyState extends State<LoginBody> {
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: SizeDimens.small,
               children: [
-                AppIcon(
-                  iconSize: SizeDimens.xxLarge,
-                ),
+                AppIcon(iconSize: SizeDimens.xxLarge),
                 Text(
                   l10n.welcomeMessage,
                   style: Theme.of(context).textTheme.titleLarge,
@@ -85,13 +81,12 @@ class _LoginBodyState extends State<LoginBody> {
                         Text(
                           l10n.chooseEmailFromList,
                           textAlign: TextAlign.end,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium
-                              ?.copyWith(
-                                color: Theme.of(context).colorScheme.secondary,
-                                decoration: TextDecoration.underline,
-                              ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                            decoration: TextDecoration.underline,
+                          ),
                         ),
                       ],
                     ),
@@ -115,22 +110,26 @@ class _LoginBodyState extends State<LoginBody> {
                         final isOTPSendingRunning =
                             loginViewmodel.sendOTPToEmail.running;
                         return FilledButton(
-                          onPressed: isOTPSendingRunning
-                              ? null
-                              : () async {
-                                  if (_emailCntrl.text.isEmpty) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          l10n.pleaseEnterEmailAddressOrChooseFromList,
+                          onPressed:
+                              isOTPSendingRunning
+                                  ? null
+                                  : () async {
+                                    if (_emailCntrl.text.isEmpty) {
+                                      ScaffoldMessenger.of(
+                                        context,
+                                      ).showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            l10n.pleaseEnterEmailAddressOrChooseFromList,
+                                          ),
                                         ),
-                                      ),
+                                      );
+                                      return;
+                                    }
+                                    loginViewmodel.sendOTPToEmail.execute(
+                                      _emailCntrl.text,
                                     );
-                                    return;
-                                  }
-                                  loginViewmodel.sendOTPToEmail
-                                      .execute(_emailCntrl.text);
-                                },
+                                  },
                           child: Text(l10n.login),
                         );
                       },
@@ -147,10 +146,7 @@ class _LoginBodyState extends State<LoginBody> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Icon(
-                    Icons.qr_code_scanner_rounded,
-                    size: SizeDimens.large,
-                  ),
+                  Icon(Icons.qr_code_scanner_rounded, size: SizeDimens.large),
                   Text(
                     l10n.scanBusinessQRCode,
                     style: Theme.of(context).textTheme.labelMedium,
@@ -165,11 +161,9 @@ class _LoginBodyState extends State<LoginBody> {
                   loginViewmodel.sendOTPToEmail.running;
               return isEmailHintPromptRunning
                   ? Container(
-                      color: Colors.black.withAlpha(25),
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
+                    color: Colors.black.withAlpha(25),
+                    child: const Center(child: CircularProgressIndicator()),
+                  )
                   : const SizedBox();
             },
           ),

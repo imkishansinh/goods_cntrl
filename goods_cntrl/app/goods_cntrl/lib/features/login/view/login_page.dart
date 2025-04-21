@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/core/dimens.dart';
-import 'package:goods_cntrl/dependencies/dependencies.dart';
+import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/features/login/widgets/login_body.dart';
 import 'package:goods_cntrl/router/routes.dart';
 import 'package:supabase_service/supabase_service.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({
-    required this.viewModel,
-    super.key,
-  });
+  const LoginPage({required this.viewModel, super.key});
 
   final LoginViewmodel viewModel;
 
@@ -56,9 +53,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _authListener(onData) {
     if (onData.session != null) {
-      context.pushReplacementNamed(
-        Routes.home.name.toString(),
-      );
+      context.pushReplacementNamed(Routes.home.name.toString());
     }
   }
 }

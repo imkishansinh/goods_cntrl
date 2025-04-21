@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:goods_cntrl/dependencies/dependencies.dart';
+import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/features/home/widgets/home_body.dart';
 import 'package:goods_cntrl/router/routes.dart';
 import 'package:goods_cntrl/utilities/secure_storage/secure_session.dart';
@@ -39,9 +39,7 @@ class _HomePageState extends State<HomePage> {
     logger.info('Registering user');
 
     supabaseContract
-        .registerNewUser(
-          supabaseContract.currentUser!.email!,
-        )
+        .registerNewUser(supabaseContract.currentUser!.email!)
         .then(_saveUserSession);
   }
 
@@ -63,9 +61,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 context.pushNamed(Routes.setting.name.toString());
               },
-              icon: const Icon(
-                Icons.settings,
-              ),
+              icon: const Icon(Icons.settings),
             ),
         ],
       ),

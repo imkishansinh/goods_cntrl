@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:goods_cntrl/dependencies/dependencies.dart';
+import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/features/home/view/home_page.dart';
 import 'package:goods_cntrl/features/landing/view/landing_page.dart';
 import 'package:goods_cntrl/features/login/view/login_page.dart';
