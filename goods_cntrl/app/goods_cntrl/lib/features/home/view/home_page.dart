@@ -53,17 +53,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomeView(),
+      body: const HomeView(),
       appBar: AppBar(
         centerTitle: true,
-        title: Text('GoodsCntrl'),
+        title: const Text('GoodsCntrl'),
         actions: [
           if (supabaseContract.isAuthenticated)
             IconButton(
               onPressed: () {
                 context.pushNamed(Routes.setting.name.toString());
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.settings,
               ),
             ),

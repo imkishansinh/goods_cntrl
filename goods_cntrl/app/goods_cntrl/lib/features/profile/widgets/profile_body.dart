@@ -43,7 +43,7 @@ class _ProfileBodyState extends State<ProfileBody> {
         }
 
         if (profileViewmodel.updateProfile.error) {
-          return Center(child: Text('Something went wrong'));
+          return const Center(child: Text('Something went wrong'));
         }
 
         if (profileViewmodel.updateProfile.completed) {
@@ -55,11 +55,11 @@ class _ProfileBodyState extends State<ProfileBody> {
           return const Center(child: CircularProgressIndicator());
         }
         if (profileViewmodel.fetchProfile.error) {
-          return Center(child: Text('Something went wrong'));
+          return const Center(child: Text('Something went wrong'));
         }
 
         if (profileViewmodel.fetchProfile is Error) {
-          return Center(child: Text('Something went wrong'));
+          return const Center(child: Text('Something went wrong'));
         }
 
         final profileData = (profileViewmodel.fetchProfile.result as Ok).value;
@@ -79,21 +79,21 @@ class _ProfileBodyState extends State<ProfileBody> {
                   controller: _firstNameController,
                   decoration: InputDecoration(
                     hintText: l10n.firstName,
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                 ),
                 TextFormField(
                   controller: _lastNameController,
                   decoration: InputDecoration(
                     hintText: l10n.lastName,
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                 ),
                 TextFormField(
                   enabled: false,
                   decoration: InputDecoration(
                     hintText: l10n.email,
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                   controller: _emailController,
                 ),
@@ -101,7 +101,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   controller: _phoneNumberController,
                   decoration: InputDecoration(
                     hintText: l10n.phoneNumber,
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                 ),
                 Row(

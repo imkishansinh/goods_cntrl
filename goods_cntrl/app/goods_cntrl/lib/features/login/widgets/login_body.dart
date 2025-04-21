@@ -71,7 +71,7 @@ class _LoginBodyState extends State<LoginBody> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: l10n.email,
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                   validator: (value) {
                     return null;
