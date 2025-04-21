@@ -1,10 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class SupabaseContract {
-  Future init(
-    String supabaseUrl,
-    String supabaseAnonKey,
-  );
+  Future init(String supabaseUrl, String supabaseAnonKey);
 
   bool get isAuthenticated;
 
@@ -15,6 +12,8 @@ abstract class SupabaseContract {
   Stream<AuthState> get authStream;
 
   Future signout();
+
+  Future<bool> isRegisterUser();
 
   Future registerNewUser(String email);
 

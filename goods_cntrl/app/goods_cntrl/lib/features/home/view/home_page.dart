@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     secureSession = locator.get<SecureSession>();
     supabaseContract = locator.get<SupabaseContract>();
-    secureSession.isUserRegistered.then((isRegistered) {
+    supabaseContract.isRegisterUser().then((isRegistered) {
       if (!isRegistered) {
         _registerUser();
       } else {
@@ -38,14 +38,7 @@ class _HomePageState extends State<HomePage> {
   void _registerUser() {
     logger.info('Registering user');
 
-    supabaseContract
-        .registerNewUser(supabaseContract.currentUser!.email!)
-        .then(_saveUserSession);
-  }
-
-  void _saveUserSession(data) {
-    logger.info('save user session');
-    secureSession.setUserRegistered();
+    supabaseContract.registerNewUser(supabaseContract.currentUser!.email!);
   }
 
   @override

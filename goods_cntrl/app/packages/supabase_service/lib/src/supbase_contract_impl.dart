@@ -15,16 +15,10 @@ class SupabaseContractImpl implements SupabaseContract {
   bool get isInit => _isInit;
 
   @override
-  Future init(
-    String supabaseUrl,
-    String supabaseAnonKey,
-  ) {
+  Future init(String supabaseUrl, String supabaseAnonKey) {
     if (!_isInit) {
       _isInit = true;
-      return Supabase.initialize(
-        url: supabaseUrl,
-        anonKey: supabaseAnonKey,
-      );
+      return Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
     }
 
     return Future.value();
@@ -61,27 +55,29 @@ class SupabaseContractImpl implements SupabaseContract {
       _supabase
           .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
           .insert({
-        SupabaseMapping.getColumnKeyName(
-          SupabaseTables.userTable,
-          SupabaseColumns.email,
-        ): email,
-      }),
+            SupabaseMapping.getColumnKeyName(
+                  SupabaseTables.userTable,
+                  SupabaseColumns.email,
+                ):
+                email,
+          }),
     );
   }
 
   @override
   Future<Map<String, dynamic>> fetchProfile() async {
-    final data = await _supabase
-        .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
-        .select()
-        .eq(
-          SupabaseMapping.getColumnKeyName(
-            SupabaseTables.userTable,
-            SupabaseColumns.email,
-          ),
-          currentUser!.email!,
-        )
-        .single();
+    final data =
+        await _supabase
+            .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
+            .select()
+            .eq(
+              SupabaseMapping.getColumnKeyName(
+                SupabaseTables.userTable,
+                SupabaseColumns.email,
+              ),
+              currentUser!.email!,
+            )
+            .single();
     return Future.value(data);
   }
 
@@ -91,17 +87,20 @@ class SupabaseContractImpl implements SupabaseContract {
         .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
         .update({
           SupabaseMapping.getColumnKeyName(
-            SupabaseTables.userTable,
-            SupabaseColumns.firstName,
-          ): profile['first_name'],
+                SupabaseTables.userTable,
+                SupabaseColumns.firstName,
+              ):
+              profile['first_name'],
           SupabaseMapping.getColumnKeyName(
-            SupabaseTables.userTable,
-            SupabaseColumns.lastName,
-          ): profile['last_name'],
+                SupabaseTables.userTable,
+                SupabaseColumns.lastName,
+              ):
+              profile['last_name'],
           SupabaseMapping.getColumnKeyName(
-            SupabaseTables.userTable,
-            SupabaseColumns.mobile,
-          ): profile['mobile'],
+                SupabaseTables.userTable,
+                SupabaseColumns.mobile,
+              ):
+              profile['mobile'],
         })
         .eq(
           SupabaseMapping.getColumnKeyName(
@@ -113,5 +112,36 @@ class SupabaseContractImpl implements SupabaseContract {
         .select()
         .single()
         .then((value) => value);
+  }
+
+  @override
+  Future<bool> isRegisterUser() async {
+    if (currentUser?.email == null) {
+      return false;
+    }
+
+    try {
+      final data =
+          await _supabase
+              .from(SupabaseMapping.getTableName(SupabaseTables.userTable))
+              .select(
+                SupabaseMapping.getColumnKeyName(
+                  SupabaseTables.userTable,
+                  SupabaseColumns.email,
+                ),
+              )
+              .eq(
+                SupabaseMapping.getColumnKeyName(
+                  SupabaseTables.userTable,
+                  SupabaseColumns.email,
+                ),
+                currentUser!.email!,
+              )
+              .maybeSingle();
+
+      return data != null;
+    } catch (e) {
+      return false;
+    }
   }
 }

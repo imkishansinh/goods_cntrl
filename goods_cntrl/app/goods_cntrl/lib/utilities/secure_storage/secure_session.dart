@@ -5,24 +5,22 @@ import 'package:injectable/injectable.dart';
 class SecureSession extends AppSession {
   SecureSession() {
     _storage = FlutterSecureStorage(
-      aOptions: const AndroidOptions(
-        encryptedSharedPreferences: true,
-      ),
+      aOptions: const AndroidOptions(encryptedSharedPreferences: true),
     );
   }
 
   late FlutterSecureStorage _storage;
 
-  @override
-  Future<bool> get isUserRegistered async {
-    final value = await _storage.read(key: 'isUserRegistered');
-    return value == 'true';
-  }
+  // @override
+  // Future<bool> get isUserRegistered async {
+  //   final value = await _storage.read(key: 'isUserRegistered');
+  //   return value == 'true';
+  // }
 
-  @override
-  Future setUserRegistered() {
-    return _storage.write(key: 'isUserRegistered', value: 'true');
-  }
+  // @override
+  // Future setUserRegistered() {
+  //   return _storage.write(key: 'isUserRegistered', value: 'true');
+  // }
 
   @override
   Future clearAllTheSession() {
@@ -31,9 +29,9 @@ class SecureSession extends AppSession {
 }
 
 abstract class AppSession {
-  Future setUserRegistered();
+  // Future setUserRegistered();
 
-  Future<bool> get isUserRegistered;
+  // Future<bool> get isUserRegistered;
 
   Future clearAllTheSession();
 }
