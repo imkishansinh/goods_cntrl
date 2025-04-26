@@ -201,7 +201,7 @@ mixin _$ProfileModel {
   String get email => throw _privateConstructorUsedError;
   String? get mobile => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_status')
-  String? get userStatus => throw _privateConstructorUsedError;
+  UserStatus? get userStatus => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_role')
   UserRole? get userRole => throw _privateConstructorUsedError;
@@ -232,7 +232,7 @@ abstract class $ProfileModelCopyWith<$Res> {
     String? gender,
     String email,
     String? mobile,
-    @JsonKey(name: 'user_status') String? userStatus,
+    @JsonKey(name: 'user_status') UserStatus? userStatus,
     String? address,
     @JsonKey(name: 'user_role') UserRole? userRole,
     @JsonKey(name: 'created_at') DateTime? createdAt,
@@ -297,7 +297,7 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
                 freezed == userStatus
                     ? _value.userStatus
                     : userStatus // ignore: cast_nullable_to_non_nullable
-                        as String?,
+                        as UserStatus?,
             address:
                 freezed == address
                     ? _value.address
@@ -339,7 +339,7 @@ abstract class _$$ProfileModelImplCopyWith<$Res>
     String? gender,
     String email,
     String? mobile,
-    @JsonKey(name: 'user_status') String? userStatus,
+    @JsonKey(name: 'user_status') UserStatus? userStatus,
     String? address,
     @JsonKey(name: 'user_role') UserRole? userRole,
     @JsonKey(name: 'created_at') DateTime? createdAt,
@@ -403,7 +403,7 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
             freezed == userStatus
                 ? _value.userStatus
                 : userStatus // ignore: cast_nullable_to_non_nullable
-                    as String?,
+                    as UserStatus?,
         address:
             freezed == address
                 ? _value.address
@@ -462,7 +462,7 @@ class _$ProfileModelImpl implements _ProfileModel {
   final String? mobile;
   @override
   @JsonKey(name: 'user_status')
-  final String? userStatus;
+  final UserStatus? userStatus;
   @override
   final String? address;
   @override
@@ -538,7 +538,7 @@ abstract class _ProfileModel implements ProfileModel {
     final String? gender,
     required final String email,
     final String? mobile,
-    @JsonKey(name: 'user_status') final String? userStatus,
+    @JsonKey(name: 'user_status') final UserStatus? userStatus,
     final String? address,
     @JsonKey(name: 'user_role') final UserRole? userRole,
     @JsonKey(name: 'created_at') final DateTime? createdAt,
@@ -562,7 +562,7 @@ abstract class _ProfileModel implements ProfileModel {
   String? get mobile;
   @override
   @JsonKey(name: 'user_status')
-  String? get userStatus;
+  UserStatus? get userStatus;
   @override
   String? get address;
   @override

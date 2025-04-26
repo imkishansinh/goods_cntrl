@@ -7,7 +7,13 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Column(
-        children: [],
+        children: [
+          Text('ONE'),
+          Text('TWO'),
+          Text('THREE'),
+          Text('FOUR'),
+          Text('FIVE'),
+        ],
       ),
     );
   }

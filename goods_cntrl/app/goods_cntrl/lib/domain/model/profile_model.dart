@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:goods_cntrl/domain/enums/enums.dart';
 
 part 'profile_model.freezed.dart';
 part 'profile_model.g.dart';
@@ -23,7 +24,7 @@ class ProfileModel with _$ProfileModel {
     String? gender,
     required String email,
     String? mobile,
-    @JsonKey(name: 'user_status') String? userStatus,
+    @JsonKey(name: 'user_status') UserStatus? userStatus,
     String? address,
     @JsonKey(name: 'user_role') UserRole? userRole,
     @JsonKey(name: 'created_at') DateTime? createdAt,
@@ -46,25 +47,4 @@ class ProfileModel with _$ProfileModel {
       email: email,
     );
   }
-}
-
-enum UserRole { distribute, retailer }
-
-enum UserStatus {
-  active,
-  block,
-  @JsonKey(name: 'kyc_pending')
-  kycPending
-}
-
-enum Gender {
-  male,
-  female,
-}
-
-enum MemmberRole {
-  po,
-  accountant,
-  @JsonKey(name: 'view_only')
-  viewOnly,
 }
