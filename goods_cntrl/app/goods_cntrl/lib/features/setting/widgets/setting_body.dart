@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/router/routes.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:goods_cntrl/l10n/app_localizations.dart';
 import 'package:supabase_service/supabase_service.dart';
 
 class SettingBody extends StatefulWidget {

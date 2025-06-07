@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:goods_cntrl/core/dimens.dart';
 import 'package:goods_cntrl/core/widgets/common_widgets.dart';
+import 'package:goods_cntrl/l10n/app_localizations.dart';
 import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/features/login/view_model/login_viewmodel.dart';
 import 'package:goods_cntrl/utilities/result.dart';
@@ -81,12 +81,11 @@ class _LoginBodyState extends State<LoginBody> {
                         Text(
                           l10n.chooseEmailFromList,
                           textAlign: TextAlign.end,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.labelMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.secondary,
-                            decoration: TextDecoration.underline,
-                          ),
+                          style: Theme.of(context).textTheme.labelMedium
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                                decoration: TextDecoration.underline,
+                              ),
                         ),
                       ],
                     ),
@@ -110,26 +109,23 @@ class _LoginBodyState extends State<LoginBody> {
                         final isOTPSendingRunning =
                             loginViewmodel.sendOTPToEmail.running;
                         return FilledButton(
-                          onPressed:
-                              isOTPSendingRunning
-                                  ? null
-                                  : () async {
-                                    if (_emailCntrl.text.isEmpty) {
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            l10n.pleaseEnterEmailAddressOrChooseFromList,
-                                          ),
+                          onPressed: isOTPSendingRunning
+                              ? null
+                              : () async {
+                                  if (_emailCntrl.text.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          l10n.pleaseEnterEmailAddressOrChooseFromList,
                                         ),
-                                      );
-                                      return;
-                                    }
-                                    loginViewmodel.sendOTPToEmail.execute(
-                                      _emailCntrl.text,
+                                      ),
                                     );
-                                  },
+                                    return;
+                                  }
+                                  loginViewmodel.sendOTPToEmail.execute(
+                                    _emailCntrl.text,
+                                  );
+                                },
                           child: Text(l10n.login),
                         );
                       },
@@ -161,9 +157,9 @@ class _LoginBodyState extends State<LoginBody> {
                   loginViewmodel.sendOTPToEmail.running;
               return isEmailHintPromptRunning
                   ? Container(
-                    color: Colors.black.withAlpha(25),
-                    child: const Center(child: CircularProgressIndicator()),
-                  )
+                      color: Colors.black.withAlpha(25),
+                      child: const Center(child: CircularProgressIndicator()),
+                    )
                   : const SizedBox();
             },
           ),

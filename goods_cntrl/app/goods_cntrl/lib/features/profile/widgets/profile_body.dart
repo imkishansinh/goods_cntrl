@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goods_cntrl/core/dimens.dart';
+import 'package:goods_cntrl/l10n/app_localizations.dart';
 import 'package:goods_cntrl/utilities/global_var.dart';
 import 'package:goods_cntrl/domain/model/profile_model.dart';
 import 'package:goods_cntrl/features/profile/view_model/profile_viewmodel.dart';

@@ -76,26 +76,22 @@ class _$BusinessModelCopyWithImpl<$Res, $Val extends BusinessModel>
   }) {
     return _then(
       _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int,
-            businessName:
-                null == businessName
-                    ? _value.businessName
-                    : businessName // ignore: cast_nullable_to_non_nullable
-                        as String,
-            businessUniqueCode:
-                null == businessUniqueCode
-                    ? _value.businessUniqueCode
-                    : businessUniqueCode // ignore: cast_nullable_to_non_nullable
-                        as String,
-            businessStatus:
-                null == businessStatus
-                    ? _value.businessStatus
-                    : businessStatus // ignore: cast_nullable_to_non_nullable
-                        as BusinessStatus,
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            businessName: null == businessName
+                ? _value.businessName
+                : businessName // ignore: cast_nullable_to_non_nullable
+                      as String,
+            businessUniqueCode: null == businessUniqueCode
+                ? _value.businessUniqueCode
+                : businessUniqueCode // ignore: cast_nullable_to_non_nullable
+                      as String,
+            businessStatus: null == businessStatus
+                ? _value.businessStatus
+                : businessStatus // ignore: cast_nullable_to_non_nullable
+                      as BusinessStatus,
           )
           as $Val,
     );
@@ -140,26 +136,22 @@ class __$$BusinessModelImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$BusinessModelImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        businessName:
-            null == businessName
-                ? _value.businessName
-                : businessName // ignore: cast_nullable_to_non_nullable
-                    as String,
-        businessUniqueCode:
-            null == businessUniqueCode
-                ? _value.businessUniqueCode
-                : businessUniqueCode // ignore: cast_nullable_to_non_nullable
-                    as String,
-        businessStatus:
-            null == businessStatus
-                ? _value.businessStatus
-                : businessStatus // ignore: cast_nullable_to_non_nullable
-                    as BusinessStatus,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        businessName: null == businessName
+            ? _value.businessName
+            : businessName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        businessUniqueCode: null == businessUniqueCode
+            ? _value.businessUniqueCode
+            : businessUniqueCode // ignore: cast_nullable_to_non_nullable
+                  as String,
+        businessStatus: null == businessStatus
+            ? _value.businessStatus
+            : businessStatus // ignore: cast_nullable_to_non_nullable
+                  as BusinessStatus,
       ),
     );
   }

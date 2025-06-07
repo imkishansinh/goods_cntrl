@@ -60,11 +60,10 @@ class _$ProfileModelListCopyWithImpl<$Res, $Val extends ProfileModelList>
   $Res call({Object? profileModelList = null}) {
     return _then(
       _value.copyWith(
-            profileModelList:
-                null == profileModelList
-                    ? _value.profileModelList
-                    : profileModelList // ignore: cast_nullable_to_non_nullable
-                        as List<ProfileModel>,
+            profileModelList: null == profileModelList
+                ? _value.profileModelList
+                : profileModelList // ignore: cast_nullable_to_non_nullable
+                      as List<ProfileModel>,
           )
           as $Val,
     );
@@ -99,11 +98,10 @@ class __$$ProfileModelListImplCopyWithImpl<$Res>
   $Res call({Object? profileModelList = null}) {
     return _then(
       _$ProfileModelListImpl(
-        profileModelList:
-            null == profileModelList
-                ? _value._profileModelList
-                : profileModelList // ignore: cast_nullable_to_non_nullable
-                    as List<ProfileModel>,
+        profileModelList: null == profileModelList
+            ? _value._profileModelList
+            : profileModelList // ignore: cast_nullable_to_non_nullable
+                  as List<ProfileModel>,
       ),
     );
   }
@@ -268,56 +266,46 @@ class _$ProfileModelCopyWithImpl<$Res, $Val extends ProfileModel>
   }) {
     return _then(
       _value.copyWith(
-            firstName:
-                freezed == firstName
-                    ? _value.firstName
-                    : firstName // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            lastName:
-                freezed == lastName
-                    ? _value.lastName
-                    : lastName // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            gender:
-                freezed == gender
-                    ? _value.gender
-                    : gender // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            email:
-                null == email
-                    ? _value.email
-                    : email // ignore: cast_nullable_to_non_nullable
-                        as String,
-            mobile:
-                freezed == mobile
-                    ? _value.mobile
-                    : mobile // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            userStatus:
-                freezed == userStatus
-                    ? _value.userStatus
-                    : userStatus // ignore: cast_nullable_to_non_nullable
-                        as UserStatus?,
-            address:
-                freezed == address
-                    ? _value.address
-                    : address // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            userRole:
-                freezed == userRole
-                    ? _value.userRole
-                    : userRole // ignore: cast_nullable_to_non_nullable
-                        as UserRole?,
-            createdAt:
-                freezed == createdAt
-                    ? _value.createdAt
-                    : createdAt // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            photo:
-                freezed == photo
-                    ? _value.photo
-                    : photo // ignore: cast_nullable_to_non_nullable
-                        as String?,
+            firstName: freezed == firstName
+                ? _value.firstName
+                : firstName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastName: freezed == lastName
+                ? _value.lastName
+                : lastName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            gender: freezed == gender
+                ? _value.gender
+                : gender // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            email: null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String,
+            mobile: freezed == mobile
+                ? _value.mobile
+                : mobile // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            userStatus: freezed == userStatus
+                ? _value.userStatus
+                : userStatus // ignore: cast_nullable_to_non_nullable
+                      as UserStatus?,
+            address: freezed == address
+                ? _value.address
+                : address // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            userRole: freezed == userRole
+                ? _value.userRole
+                : userRole // ignore: cast_nullable_to_non_nullable
+                      as UserRole?,
+            createdAt: freezed == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            photo: freezed == photo
+                ? _value.photo
+                : photo // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -374,56 +362,46 @@ class __$$ProfileModelImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$ProfileModelImpl(
-        firstName:
-            freezed == firstName
-                ? _value.firstName
-                : firstName // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        lastName:
-            freezed == lastName
-                ? _value.lastName
-                : lastName // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        gender:
-            freezed == gender
-                ? _value.gender
-                : gender // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        email:
-            null == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                    as String,
-        mobile:
-            freezed == mobile
-                ? _value.mobile
-                : mobile // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        userStatus:
-            freezed == userStatus
-                ? _value.userStatus
-                : userStatus // ignore: cast_nullable_to_non_nullable
-                    as UserStatus?,
-        address:
-            freezed == address
-                ? _value.address
-                : address // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        userRole:
-            freezed == userRole
-                ? _value.userRole
-                : userRole // ignore: cast_nullable_to_non_nullable
-                    as UserRole?,
-        createdAt:
-            freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        photo:
-            freezed == photo
-                ? _value.photo
-                : photo // ignore: cast_nullable_to_non_nullable
-                    as String?,
+        firstName: freezed == firstName
+            ? _value.firstName
+            : firstName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastName: freezed == lastName
+            ? _value.lastName
+            : lastName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        gender: freezed == gender
+            ? _value.gender
+            : gender // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        mobile: freezed == mobile
+            ? _value.mobile
+            : mobile // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        userStatus: freezed == userStatus
+            ? _value.userStatus
+            : userStatus // ignore: cast_nullable_to_non_nullable
+                  as UserStatus?,
+        address: freezed == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        userRole: freezed == userRole
+            ? _value.userRole
+            : userRole // ignore: cast_nullable_to_non_nullable
+                  as UserRole?,
+        createdAt: freezed == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        photo: freezed == photo
+            ? _value.photo
+            : photo // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
